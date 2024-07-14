@@ -1,0 +1,44 @@
+Para colocar o icone no botão 
+--------------------------------------------------------------
+<main class="apresentacao">
+    <section class="apresentacao__conteudo">
+        <div class="apresentacao__links">
+            <h2 class="apresentacao__links__subtitulo">Acesse minhas redes:</h2>
+            <a class="apresentacao__links__link" href="https://github.com/seunome">
+                <img src="./assets/github.png">
+                Github
+            </a>
+            <a class="apresentacao__links__link" href="https://linkedin.com/in/seunome">
+                <img src="./assets/linkedin.png">
+                LinkedIn
+            </a>
+            <a class="apresentacao__links__link" href="https://twitch.tv/seunome">
+                <img src="./assets/twitch.png">
+                Twitch
+            </a>
+        </div>
+    </section>
+    <img src="./assets/imagem.png" alt="Foto da Joana Santos programando">
+</main>
+<footer></footer>
+</body>
+</html>
+
+
+CSS:
+
+.apresentacao__links__link {
+    /* background-color: #22D4FD; */
+    display: flex;
+    justify-content: center;
+    border: 2px solid #22D4FD;
+    ... /* outras propriedades */
+}
+
+.apresentacao__links__link {
+    /* background-color: #22D4FD; */
+    display: flex;
+    justify-content: center;
+    gap: 16px; /* valor do espaçamento identificado no Figma */
+    ... /* outras propriedades */
+}
