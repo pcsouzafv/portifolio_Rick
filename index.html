@@ -3,106 +3,478 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio do Ricardo</title>
-    <meta name="description" content="Portfólio online de Ricardo Souza, desenvolvedor(a) web experiente em HTML, CSS e JavaScript.">
-    <meta name="keywords" content="portfólio, desenvolvedor web, HTML, CSS, JavaScript">
-    <meta name="author" content="Ricardo Souza">
-    <meta name="theme-color" content="#007bff">
-    <link rel="stylesheet" href="Style.css">
+    <title>Ricardo Souza - Cybersecurity & Cloud Infrastructure</title>
+    <style>
+        :root {
+            --primary-color: #0A192F;
+            --secondary-color: #64FFDA;
+            --text-color: #CCD6F6;
+            --bg-color: #0A192F;
+            --accent-color: #112240;
+            --card-bg: rgba(17, 34, 64, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .cabecalho {
+            padding: 1.5rem;
+            background-color: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .cabecalho__menu {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .cabecalho__menu__link {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .cabecalho__menu__link:hover {
+            color: var(--secondary-color);
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.9)),
+                        url('./img/euLinkedin.jpeg') center/cover;
+        }
+
+        .hero__content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero__title {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero__subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .skills {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skills__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary-color);
+        }
+
+        .skill-card__title {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 4rem auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background-color: var(--secondary-color);
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+            width: calc(50% - 2rem);
+            margin-left: auto;
+        }
+
+        .timeline-item:nth-child(odd) {
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        .timeline-content {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -3rem;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -3rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .contact {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact__form {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        .contact__form input,
+        .contact__form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            background: var(--bg-color);
+            border: 1px solid var(--secondary-color);
+            border-radius: 4px;
+            color: var(--text-color);
+        }
+
+        .btn {
+            background: transparent;
+            color: var(--secondary-color);
+            border: 1px solid var(--secondary-color);
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: rgba(100, 255, 218, 0.1);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .cabecalho__menu {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-item {
+                width: calc(100% - 3rem);
+                margin-left: 3rem;
+            }
+
+            .timeline-item:nth-child(odd) {
+                margin-left: 3rem;
+            }
+
+            .timeline-content::before {
+                left: -3rem !important;
+            }
+
+            .hero__title {
+                font-size: 2rem;
+            }
+
+            .hero__subtitle {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Ricardo Santana de Souza</h1>
-        <h2><strong>Infraestrutura de TI | DevOps | DevSecOps | Segurança da Informação</strong></h2>
+    <header class="cabecalho">
+        <nav class="cabecalho__menu">
+            <a class="cabecalho__menu__link" href="#home">Home</a>
+            <a class="cabecalho__menu__link" href="#habilidades">Habilidades</a>
+            <a class="cabecalho__menu__link" href="#experiencia">Experiência</a>
+            <a class="cabecalho__menu__link" href="#certificacoes">Certificações</a>
+            <a class="cabecalho__menu__link" href="#video">Apresentação</a>
+            <a class="cabecalho__menu__link" href="#contato">Contato</a>
+        </nav>
     </header>
-    <main>
-    <section class="container" id="sobre-mim">
-        <div class="conteudo-principal">
-            <div id="foto">
-                <img src="img/euLinkedin.jpeg" alt="Foto do Ricardo" width="200" height="200">
+
+    <section class="hero" id="home">
+        <div class="hero__content">
+            <h1 class="hero__title">Ricardo Santana de Souza</h1>
+            <p class="hero__subtitle">Especialista em Técnologia</p>
+            <p class="hero__subtitle">Mais de 12 anos de experiência em implantações de sistemas, segurança e infraestrutura</p>
+        </div>
+    </section>
+
+    <section class="skills" id="habilidades">
+        <h2 style="text-align: center; color: var(--secondary-color); margin-bottom: 2rem;">Habilidades & Competências</h2>
+        <div class="skills__grid">
+            <div class="skill-card">
+                <h3 class="skill-card__title">Cloud Computing</h3>
+                <p>Expertise em AWS, Azure e GCP, com foco em arquitetura e segurança de ambientes cloud.</p>
             </div>
-            <div class="texto-sobre">
-                <h2>Sobre Mim</h2>
-                <p>"Profissional de TI com 10 anos de experiência em suporte de TI, entre implantação	de sistemas, segurança cibernética e
-                    infraestrutura, apaixonado por proteger dados contra ameaças digitais. Experiência comprovada em
-                    ambientes de alta complexidade, com foco em infraestrutura cloud, redes de telecomunicações, suporte técnico e
-                    segurança da informação.<strong>Pós Graduado em Cybersecurity.</strong> Busco uma oportunidade
-                    desafiadora em uma organização líder, onde possa aplicar minhas habilidades e conhecimentos para
-                    fortalecer a segurança e a infraestrutura de TI, contribuindo para o sucesso da equipe e da empresa.
-                    Vamos conversar sobre como posso agregar valor à sua equipe!"</p>
+            <div class="skill-card">
+                <h3 class="skill-card__title">Cybersecurity</h3>
+                <p>Especialização em proteção de dados, políticas de segurança e conformidade com LGPD.</p>
+            </div>
+            <div class="skill-card">
+                <h3 class="skill-card__title">DevOps</h3>
+                <p>Automação de processos, CI/CD, GitHub, Terraform e integração contínua.</p>
+            </div>
+            <div class="skill-card">
+                <h3 class="skill-card__title">Infraestrutura</h3>
+                <p>Gestão de servidores Windows/Linux, virtualização (VMware/Hyper-V), redes.</p>
             </div>
         </div>
-        <button id="mostrar-mais">Mostrar mais:</button>
-        <p id="texto-extra" style="display:none;">
-    - Com uma trajetória profissional dedicada à tecnologias e à infraestrutura de cloud computing, especializei-me
-    em criar ambientes seguros e eficientes em plataformas como AWS, Azure e GCP. Meu perfil valoriza a inovação e a
-    automação, elementos essenciais para a agilidade e resiliência dos sistemas que gerenciamos.<br>
-    - A missão de proteger dados e sistemas contra ameaças cibernéticas é o que me motiva diariamente. Com habilidades
-    consolidadas constantemente em Infraestrutura Cloud, DevOps e CyberSecurity, contribuindo ativamente para a
-    infraestrutura e estratégia de segurança da informação, buscando sempre otimizar custos e melhorar o desempenho dos
-    sistemas que estão sob minha responsabilidade.
-        </p>
     </section>
-        <section class="projetos-container" id="projetos">
-            <h2>Projetos e experiência profissional:</h2>
-            <ul>
-                <li>
-                    <h3>Implantação de Sistemas de Segurança</h3>
-                    <p>• Forneci suporte técnico especializado com tecnologias da plataforma Microsoft .NET, solucionando problemas relacionados
-                    a bug's com leitura de log's e forms, problemas de rede, serviços web e banco de dados. Realizei manutenção preventiva e corretiva em servidores e
-                    estações de trabalho.<br>
-                    • Especialista em Suporte a Sistemas: Prestei suporte abrangente a sistemas, incluindo instalação, configuração e
-                    resolução de problemas em ambientes Windows e SQL Server. Implementei e realizei manutenção em sistemas web, garantindo
-                    seu funcionamento ideal.<br>
-                    • Suporte a Usuários Nível 2: Ofereci suporte técnico avançado a usuários ténicos, resolvendo problemas complexos relacionados a
-                    software, hardware e conectividade.<br>
-                    • Suporte a Usuários Nível 3: Realizei e diagnostiquei e solucionei problemas em bancos de dados SQL Server.<br>
-                    • Técnico de Suporte: Auxiliei usuários na utilização de sistemas e softwares, fornecendo orientações e solucionando
-                    problemas. Realizei configurações e instalações de softwares em ambiente Windows.<br>
-                 • Participei de um Projeto Temporário de Implantação de Sistemas LinxPos-e, onde trabalhei com tecnologias como
-                DataSync, ETL, D-TEF e banco de dados SQL SERVER.<br>
-                • Fui responsável pela configuração de PDV's com o sistema operacional Windows 10, instalação e configuração de
-                sistemas, análise de logs xml e execução de scripts Json.<br>
-                • Também atuei na configuração de redes, incluindo DNS, DHCP e TCP/IP.
-                </li>
-                <li>
-                    <h3>Projetos de Segurança da Informação</h3>
-                    <p>•Tive a oportunidade de implantar a LGPD em uma empresa onde fui responsável por planejamento de soluções de Infraestrutura e Segurança de TI 
-                        para o ambiente corporativo e operativo
-                    da empresa.<br>
-                    • Criação de ambiente de segurança e criação do plano de compliance LGPD.<br>
-                    • Monitorei sistemas e resolvi incidentes para garantir a alta disponibilidade e desempenho dos serviços de Cloud e on
-                    premise, Azure e Office 365.<br>
-                    • Criei políticas de acesso e manutenção de usuários, definindo regras de acesso para os servidores de arquivos e
-                    diretórios.</li>
-                <li>
-                    <h3>Infraestrutura de Redes de Computadores com Segurança Cibernética</h3>
-                    <p>•Atuei na criação e execução de implantação do Outsorce de rede Vivo, com criação de SDWAN e seguimentação de rede.<br>
-                    •Participei de um grande projeto de melhorias de infraestrutura em mais de 80 clínicas no Brasil.<br>
-                    •Criei um plano de redução de custo com o mapeamento de telefonia mobile e fibras e implantei novas soluções de VOZ sip-trunking.
-                    •Participei atuante na criação de um número único Brasil, com URAS e criação de servidores Cloud.
-                    </li>
-            </ul>
-        </section>
-        <section classe ="contato" id="contato">
-           
-            <h2>Contato</h2>
-            <p>Entre em contato através das minhas redes sociais:</p>
-          
-            <a href="https://www.instagram.com/pc_ricardo/">Instagram</a>
-            <img src="img/instagram.png" alt="logo instagram">
-                  
-            <a href="https://github.com/pcsouzafv">GitHub</a>
-            <img class="imagem__logo" src="img/github.png" alt="logo github">
-            
-            <a href="https://www.linkedin.com/in/pcricardo2024/">Linkedin</a>
-            <img class="imagem__logo" src="img/linkedin.png" alt="logo linkedln">
-            
-        </section>
-    </main>
-    <footer class = "rodape">
-        <p>&copy; 2024 Ricardo Souza</p>
-    </footer>
-    <script src="Script.js"></script>
+
+    <section id="experiencia">
+        <h2 style="text-align: center; color: var(--secondary-color); margin-bottom: 2rem;">Experiência Profissional</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Analista de Monitoramento Sênior</h3>
+                    <h4>ART IT Intelligent Technology</h4>
+                    <p>2024 - Presente</p>
+                    <ul>
+                        <li>Configuração e gestão de ferramentas de monitoramento</li>
+                        <li>Análise de dados</li>
+                        <li>Identificação e resolução de incidentes</li>
+                        <li>Otimização de desempenho</li>
+                        <li>Geração de relatórios</li>
+                        <li>Planejamento e implementação de melhorias</li>
+                        <li>Uso de ferramentas como Grafana, Zabbix, Json, PostgreSQL</li>
+                        <li>Protocolos de rede SNMP, TCP, UDP</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Analista de Infraestrutura Sênior</h3>
+                    <h4>DaVita Kidney Care</h4>
+                    <p>2022 - 2024</p>
+                    <ul>
+                        <li>Gestão de Sistemas Híbridos</li>
+                        <li>Implementação e suporte na integração e entrega contínua</li>
+                        <li>Monitoramento de Sistemas</li>
+                        <li>Proatividade na resolução de incidentes</li>
+                        <li>Automação de Processos</li>
+                        <li>Monitoramento e gerenciamento de dispositivos</li>
+                        <li>Soluções de TI</li>
+                        <li>Administração e Troubleshooting</li>
+                        <li>Mentoria</li>
+                        <li>Diagnóstico Técnico</li>
+                        <li>Documentação</li>
+                        <li>Projetos de TI</li>
+                        <li>Liderança técnica na configuração de Servidores Cloud</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Analista de Infraestrutura e Segurança</h3>
+                    <h4>Laboratório Canonne</h4>
+                    <p>2019 - 2022</p>
+                    <ul>
+                        <li>Segurança e Compliance</li>
+                        <li>Administração Cloud</li>
+                        <li>Políticas de Segurança</li>
+                        <li>Planejamento Estratégico</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Arquiteto de Soluções (Freelance)</h3>
+                    <h4>Lojas Citycol S/A</h4>
+                    <p>2019</p>
+                    <ul>
+                        <li>Implantação de Sistemas LinxPos-e</li>
+                        <li>Experiência com DataSync, ETL, D-TEF e SQL Server</li>
+                        <li>Configuração de PDV e Windows 10</li>
+                        <li>Instalação e configuração de PDVs</li>
+                        <li>Servidores Azure</li>
+                        <li>Gestão de Redes</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Analista de Infraestrutura e Suporte</h3>
+                    <h4>Dormakaba - Task Sistemas</h4>
+                    <p>2013 - 2018</p>
+                    <ul>
+                        <li>Sistemas</li>
+                        <li>Suporte Níveis 2 e 3</li>
+                        <li>Assistência a Usuários</li>
+                        <li>Suporte Técnico</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certificacoes">
+        <h2 style="text-align: center; color: var(--secondary-color); margin-bottom: 2rem;">Certificações</h2>
+        <div class="skills__grid">
+            <div class="skill-card">
+                <h3 class="skill-card__title">Cloud</h3>
+                <ul style="list-style: none;">
+                    <li>✓ Google Cloud Platform (GCP)</li>
+                    <li>✓ AWS Architect</li>
+                    <li>✓ Azure (em andamento)</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3 class="skill-card__title">Segurança</h3>
+                <ul style="list-style: none;">
+                    <li>✓ CC ISC2</li>
+                    <li>✓ Google Cybersecurity</li>
+                    <li>✓ CompTIA Security+ (em andamento)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="video">
+        <h2 style="text-align: center; color: var(--secondary-color); margin-bottom: 2rem;">Apresentação em Vídeo</h2>
+        <div style="text-align: center;">
+            <h3 style="color: var(--text-color);">Português</h3>
+            <video controls width="600">
+                <source src="path/to/your/video_pt.mp4" type="video/mp4">
+                Seu navegador não suporta o elemento de vídeo.
+            </video>
+            <h3 style="color: var(--text-color); margin-top: 2rem;">Inglês</h3>
+            <video controls width="600">
+                <source src="path/to/your/video_en.mp4" type="video/mp4">
+                Seu navegador não suporta o elemento de vídeo.
+            </video>
+        </div>
+    </section>
+
+    <section class="contact" id="contato">
+        <h2 style="color: var(--secondary-color);">Contato</h2>
+        <p>Entre em contato para discutirmos como posso agregar valor ao seu projeto.</p>
+        <div class="contact__form">
+            <form>
+                <input type="text" placeholder="Nome" required>
+                <input type="email" placeholder="Email" required>
+                <textarea rows="5" placeholder="Mensagem" required></textarea>
+                <button type="submit" class="btn">Enviar Mensagem</button>
+            </form>
+            <p style="margin-top: 2rem;">
+                <strong>Telefones:</strong> (32) 99938-4534 ou (21) 97200-8679<br>
+                <strong>Email:</strong> rickpcsouza@hotmail.com ou pcsouzafv@gmail.com<br>
+                <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/pcricardo2024/" target="_blank" style="color: var(--secondary-color);">linkedin.com/in/pcricardo2024</a><br>
+                <strong>GitHub:</strong> <a href="https://github.com/pcsouzafv" target="_blank" style="color: var(--secondary-color);">github.com/pcsouzafv</a>
+            </p>
+        </div>
+    </section>
+
+    <script>
+        // Animação suave do scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animação das skill cards no scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-card').forEach(card => {
+            card.style.opacity = "0";
+            card.style.transform = "translateY(20px)";
+            card.style.transition = "all 0.6s ease";
+            observer.observe(card);
+        });
+    </script>
 </body>
 </html>
