@@ -1,847 +1,933 @@
 <!DOCTYPE html>
-<html lang="pt" class="scroll-smooth">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfólio de Ricardo Santana de Souza - Cloud Infrastructure, Monitoring & Operations Professional.">
-    <title>Ricardo Santana de Souza | Cloud & Infra</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        heading: ['Outfit', 'sans-serif'],
-                    },
-                    colors: {
-                        primary: '#0B0F19',
-                        secondary: '#111827',
-                        accent: '#3B82F6',
-                        neon: '#06b6d4'
-                    },
-                    backgroundImage: {
-                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            background-color: #0B0F19;
-            color: #E5E7EB;
-        }
-        ::selection {
-            background: #06b6d4;
-            color: #fff;
-        }
-        .glass {
-            background: rgba(17, 24, 39, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .glass-card {
-            background: linear-gradient(145deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        .glass-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(6, 182, 212, 0.4);
-            box-shadow: 0 10px 40px rgba(6, 182, 212, 0.15);
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, #3B82F6 0%, #06b6d4 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        /* Timeline specific */
-        .timeline-line {
-            position: absolute;
-            left: 20px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, #3B82F6, #06b6d4);
-        }
-        @media (min-width: 768px) {
-            .timeline-line {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-        }
-        .timeline-dot {
-            width: 16px;
-            height: 16px;
-            background: #0B0F19;
-            border: 2px solid #06b6d4;
-            border-radius: 50%;
-            position: absolute;
-            left: -7px;
-            top: 24px;
-            z-index: 10;
-        }
-        @media (min-width: 768px) {
-            .timeline-item:nth-child(odd) .timeline-dot {
-                right: -40px;
-                left: auto;
-            }
-            .timeline-item:nth-child(even) .timeline-dot {
-                left: -40px;
-            }
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfólio de Ricardo Souza - Cloud, infraestrutura, monitoramento, automação e projetos no GitHub.">
+  <title>Ricardo Souza | Cloud, Infra & GitHub Projects</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-2: #0b1728;
+      --surface: rgba(13, 23, 39, 0.76);
+      --surface-strong: rgba(18, 30, 49, 0.92);
+      --line: rgba(255, 255, 255, 0.10);
+      --text: #e7eef9;
+      --muted: #9eb0c9;
+      --accent: #7dd3fc;
+      --accent-2: #60a5fa;
+      --accent-3: #22c55e;
+      --warning: #fbbf24;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max: 1180px;
+    }
 
-        /* Animations */
-        @keyframes fade-in-up {
-            0% { opacity: 0; transform: translateY(30px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in-up {
-            animation: fade-in-up 0.8s ease-out forwards;
-            opacity: 0;
-        }
-        .delay-100 { animation-delay: 100ms; }
-        .delay-200 { animation-delay: 200ms; }
-        .delay-300 { animation-delay: 300ms; }
-    </style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(96, 165, 250, 0.16), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(34, 197, 94, 0.14), transparent 24%),
+        linear-gradient(180deg, #05101d 0%, var(--bg) 55%, #050b14 100%);
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 42px 42px;
+      -webkit-mask-image: radial-gradient(circle at center, black 55%, transparent 100%);
+      mask-image: radial-gradient(circle at center, black 55%, transparent 100%);
+      opacity: 0.45;
+      z-index: -1;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .wrap { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(18px);
+      background: rgba(5, 12, 22, 0.72);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand__mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(125, 211, 252, 0.22), rgba(96, 165, 250, 0.12));
+      border: 1px solid rgba(125, 211, 252, 0.28);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav__links a:hover { color: var(--text); }
+
+    .hero {
+      padding: 54px 0 32px;
+    }
+
+    .hero__grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(125, 211, 252, 0.22);
+      background: rgba(13, 23, 39, 0.65);
+      color: var(--accent);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-size: 0.92rem;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow__dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-3));
+      box-shadow: 0 0 22px rgba(125, 211, 252, 0.7);
+    }
+
+    h1, h2, h3, h4, .brand { font-family: "Space Grotesk", sans-serif; }
+    h1 {
+      margin: 0;
+      font-size: clamp(3rem, 8vw, 5.8rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #f8fbff 0%, #8ddcff 36%, #60a5fa 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero__lead {
+      margin: 18px 0 0;
+      max-width: 62ch;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.75;
+    }
+
+    .hero__actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 999px;
+      padding: 14px 18px;
+      font-weight: 700;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+    .btn--primary {
+      background: linear-gradient(135deg, var(--accent-2), var(--accent));
+      color: #04111f;
+      box-shadow: 0 16px 38px rgba(96, 165, 250, 0.24);
+    }
+
+    .btn--ghost {
+      background: rgba(255, 255, 255, 0.03);
+      border-color: rgba(255, 255, 255, 0.10);
+      color: var(--text);
+    }
+
+    .hero__stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .stat, .card, .panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: var(--radius-md);
+    }
+
+    .stat__value {
+      display: block;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .stat__label { color: var(--muted); font-size: 0.95rem; line-height: 1.45; }
+
+    .profile {
+      position: relative;
+      padding: 18px;
+      border-radius: 34px;
+      background:
+        linear-gradient(180deg, rgba(125, 211, 252, 0.12), rgba(96, 165, 250, 0.04)),
+        var(--surface-strong);
+      border: 1px solid rgba(125, 211, 252, 0.15);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .profile::before {
+      content: "";
+      position: absolute;
+      inset: auto -20% -36% auto;
+      width: 240px;
+      height: 240px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(125, 211, 252, 0.20), transparent 68%);
+      filter: blur(16px);
+    }
+
+    .profile__image {
+      aspect-ratio: 1 / 1;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .profile__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .profile__meta {
+      padding: 18px 6px 6px;
+    }
+
+    .profile__meta h3 {
+      margin: 0 0 8px;
+      font-size: 1.4rem;
+    }
+
+    .profile__meta p { margin: 0; color: var(--muted); line-height: 1.6; }
+
+    .section {
+      padding: 72px 0;
+    }
+
+    .section__head {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .section__eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .section__title {
+      margin: 0;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      letter-spacing: -0.04em;
+    }
+
+    .section__desc {
+      margin: 0;
+      max-width: 72ch;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .about__grid,
+    .trust__grid,
+    .contact__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .panel, .card {
+      border-radius: var(--radius-lg);
+      padding: 22px;
+    }
+
+    .panel p, .card p { color: var(--muted); line-height: 1.72; }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 9px 12px;
+      font-size: 0.92rem;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 16px rgba(125, 211, 252, 0.8);
+    }
+
+    .projects__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .project {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      background: linear-gradient(135deg, rgba(125, 211, 252, 0.14), transparent 40%, rgba(34, 197, 94, 0.10));
+      opacity: 0;
+      transition: opacity .2s ease;
+      pointer-events: none;
+    }
+
+    .project:hover::before { opacity: 1; }
+
+    .project__top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .project__title {
+      margin: 0 0 8px;
+      font-size: 1.15rem;
+    }
+
+    .project__meta {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .project__link {
+      margin-top: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .project__link:hover { color: #b6e7ff; }
+
+    .project__more {
+      margin-top: 18px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline__item {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 18px;
+      align-items: start;
+      padding: 20px;
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .timeline__date {
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .timeline__title {
+      margin: 2px 0 8px;
+      font-size: 1.1rem;
+    }
+
+    .timeline__company {
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .timeline__item ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .achievements__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .achievement {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .badge {
+      flex: 0 0 auto;
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: rgba(125, 211, 252, 0.12);
+      border: 1px solid rgba(125, 211, 252, 0.18);
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .achievement h4 {
+      margin: 0 0 6px;
+      font-size: 1.05rem;
+    }
+
+    .recommendation {
+      min-height: 100%;
+    }
+
+    .recommendation__label {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--warning);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 700;
+    }
+
+    .contact__card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 100%;
+    }
+
+    .contact__card strong { font-family: "Space Grotesk", sans-serif; font-size: 1.05rem; }
+
+    .footer {
+      padding: 32px 0 44px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .footer__inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .hero__grid,
+      .about__grid,
+      .projects__grid,
+      .achievements__grid,
+      .trust__grid,
+      .contact__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline__item {
+        grid-template-columns: 1fr;
+      }
+
+      .nav__inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .wrap { width: min(var(--max), calc(100% - 24px)); }
+      .hero { padding-top: 34px; }
+      .hero__stats {
+        grid-template-columns: 1fr;
+      }
+      .nav__links {
+        gap: 12px;
+        font-size: 0.88rem;
+      }
+      .section { padding: 58px 0; }
+      .panel, .card, .stat { padding: 18px; }
+    }
+  </style>
 </head>
-<body class="antialiased selection:bg-neon selection:text-white">
-
-    <!-- Background glow effects -->
-    <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
-        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-accent/10 blur-[120px]"></div>
-        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-neon/10 blur-[120px]"></div>
+<body>
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a class="brand" href="#top" aria-label="Ir para o topo">
+        <span class="brand__mark">RS</span>
+        <span>Ricardo Souza</span>
+      </a>
+      <nav class="nav__links" aria-label="Navegação principal">
+        <a href="#sobre">Sobre</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#conquistas">Conquistas</a>
+        <a href="#recomendacoes">Recomendações</a>
+        <a href="#contato">Contato</a>
+      </nav>
     </div>
+  </header>
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex-shrink-0">
-                    <a href="#" class="font-heading font-bold text-2xl tracking-tighter text-white">
-                        R<span class="text-neon">S</span>
-                    </a>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#resumo" class="text-gray-300 hover:text-neon transition-colors px-3 py-2 rounded-md text-sm font-medium" data-i18n="nav.summary">Resumo</a>
-                        <a href="#competencias" class="text-gray-300 hover:text-neon transition-colors px-3 py-2 rounded-md text-sm font-medium" data-i18n="nav.skills">Competências</a>
-                        <a href="#experiencia" class="text-gray-300 hover:text-neon transition-colors px-3 py-2 rounded-md text-sm font-medium" data-i18n="nav.experience">Experiência</a>
-                        <a href="#formacao" class="text-gray-300 hover:text-neon transition-colors px-3 py-2 rounded-md text-sm font-medium" data-i18n="nav.education">Formação</a>
-                        <a href="#contato" class="bg-gradient-to-r from-accent to-neon text-white px-5 py-2 rounded-full text-sm font-semibold hover:shadow-[0_0_15px_rgba(6,182,212,0.5)] transition-all" data-i18n="nav.contact">Contato</a>
-                        <!-- Language Switcher -->
-                        <div class="relative" id="lang-switcher">
-                            <button id="lang-btn" class="flex items-center gap-1.5 text-gray-300 hover:text-neon transition-colors px-3 py-2 rounded-md text-sm font-medium glass">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg>
-                                <span id="lang-current">PT</span>
-                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                            </button>
-                            <div id="lang-menu" class="hidden absolute right-0 mt-2 w-36 glass rounded-xl shadow-xl border border-white/10 overflow-hidden z-50">
-                                <button onclick="setLang('pt')" class="w-full text-left px-4 py-2.5 text-sm text-gray-300 hover:text-neon hover:bg-white/5 flex items-center gap-2"><span>🇧🇷</span> Português</button>
-                                <button onclick="setLang('en')" class="w-full text-left px-4 py-2.5 text-sm text-gray-300 hover:text-neon hover:bg-white/5 flex items-center gap-2"><span>🇺🇸</span> English</button>
-                                <button onclick="setLang('es')" class="w-full text-left px-4 py-2.5 text-sm text-gray-300 hover:text-neon hover:bg-white/5 flex items-center gap-2"><span>🇪🇸</span> Español</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Mobile menu -->
-        <div class="md:hidden hidden glass" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#resumo" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-neon" data-i18n="nav.summary">Resumo</a>
-                <a href="#competencias" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-neon" data-i18n="nav.skills">Competências</a>
-                <a href="#experiencia" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-neon" data-i18n="nav.experience">Experiência</a>
-                <a href="#formacao" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-neon" data-i18n="nav.education">Formação</a>
-                <a href="#contato" class="block px-3 py-2 rounded-md text-base font-medium text-neon" data-i18n="nav.contact">Contato</a>
-                <!-- Mobile lang switcher -->
-                <div class="flex gap-2 px-3 py-2">
-                    <button onclick="setLang('pt')" class="flex-1 text-center py-1.5 rounded-lg glass text-sm text-gray-300 hover:text-neon">🇧🇷 PT</button>
-                    <button onclick="setLang('en')" class="flex-1 text-center py-1.5 rounded-lg glass text-sm text-gray-300 hover:text-neon">🇺🇸 EN</button>
-                    <button onclick="setLang('es')" class="flex-1 text-center py-1.5 rounded-lg glass text-sm text-gray-300 hover:text-neon">🇪🇸 ES</button>
-                </div>
-            </div>
-        </div>
-    </nav>
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero__grid">
+        <div class="reveal">
+          <div class="eyebrow"><span class="eyebrow__dot"></span> Disponível para oportunidades em Cloud, Infra e Observabilidade</div>
+          <h1>
+            Portfólio com foco em <span class="gradient-text">resultado, automação e confiabilidade</span>
+          </h1>
+          <p class="hero__lead">
+            Sou Ricardo Souza, profissional de infraestrutura, monitoramento e operações com mais de 10 anos de experiência em ambientes cloud, suporte técnico, resposta a incidentes e automação. Este portfólio organiza minha trajetória, destaca projetos do GitHub e mostra as conquistas que reforçam meu perfil.
+          </p>
 
-    <!-- Hero Section -->
-    <section id="hero" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden min-h-screen flex items-center">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-            <div class="text-center md:text-left grid md:grid-cols-2 gap-12 items-center">
-                <div class="animate-fade-in-up">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass border-accent/30 text-accent text-sm font-medium mb-6">
-                        <span class="w-2 h-2 rounded-full bg-neon animate-pulse"></span>
-                        <span data-i18n="hero.badge">Disponível para oportunidades (Brasil / Internacional / Remoto)</span>
-                    </div>
-                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white leading-tight mb-4">
-                        Ricardo <br/>
-                        <span class="gradient-text">Santana de Souza</span>
-                    </h1>
-                    <p class="mt-4 text-xl md:text-2xl text-gray-400 font-light mb-8 max-w-2xl" data-i18n="hero.subtitle">
-                        Infraestrutura Cloud, Monitoramento e Operações
-                    </p>
-                    
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                        <a href="#contato" class="inline-flex justify-center items-center gap-2 px-8 py-4 bg-gradient-to-r from-accent to-neon text-white rounded-full font-semibold hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all">
-                            <span data-i18n="hero.cta">Falar Comigo</span>
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                        </a>
-                        <a href="https://www.linkedin.com/in/pcricardo2024/" target="_blank" class="inline-flex justify-center items-center gap-2 px-8 py-4 glass text-white rounded-full font-semibold hover:bg-white/5 transition-all">
-                            LinkedIn
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                        </a>
-                    </div>
-                </div>
-                <div class="animate-fade-in-up delay-200 hidden md:flex justify-end perspective-1000">
-                    <div class="relative w-72 h-72 lg:w-96 lg:h-96">
-                        <!-- Default placeholder style since we might not have the image actively accessible without auth/broken link. Kept the style premium. -->
-                        <div class="absolute inset-0 rounded-full bg-gradient-to-br from-accent to-neon opacity-20 blur-2xl"></div>
-                        <div class="relative w-full h-full rounded-[2rem] overflow-hidden border-2 border-white/10 shadow-2xl glass-card flex items-center justify-center p-2">
-                             <img src="./img/euLinkedin.jpeg" alt="Ricardo Santana" class="w-full h-full object-cover rounded-[1.5rem]" onerror="this.src='https://ui-avatars.com/api/?name=Ricardo+Santana&background=111827&color=06b6d4&size=512'"/>
-                        </div>
-                    </div>
-                </div>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="https://github.com/pcsouzafv" target="_blank" rel="noopener noreferrer">
+              Ver GitHub
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a class="btn btn--ghost" href="mailto:rickpcsouza@hotmail.com">
+              Falar comigo
+            </a>
+          </div>
+
+          <div class="hero__stats">
+            <div class="stat">
+              <span class="stat__value">10+ anos</span>
+              <span class="stat__label">atuando com infraestrutura, suporte e operações.</span>
             </div>
+            <div class="stat">
+              <span class="stat__value">Cloud + SRE</span>
+              <span class="stat__label">Azure, AWS, GCP, monitoramento e confiabilidade.</span>
+            </div>
+            <div class="stat">
+              <span class="stat__value">GitHub</span>
+              <span class="stat__label">projetos públicos em automação, dados, estudos e apps.</span>
+            </div>
+          </div>
         </div>
+
+        <aside class="profile reveal">
+          <div class="profile__image">
+            <img src="./img/euLinkedin.jpeg" alt="Foto de Ricardo Souza">
+          </div>
+          <div class="profile__meta">
+            <h3>Ricardo Santana de Souza</h3>
+            <p>Cloud, monitoramento, automação e segurança operacional. Perfil orientado a solução, documentação e estabilidade de serviço.</p>
+            <div class="chips">
+              <span class="chip"><span class="dot"></span> Azure</span>
+              <span class="chip"><span class="dot"></span> Grafana</span>
+              <span class="chip"><span class="dot"></span> Zabbix</span>
+              <span class="chip"><span class="dot"></span> Terraform</span>
+              <span class="chip"><span class="dot"></span> Docker</span>
+              <span class="chip"><span class="dot"></span> Kubernetes</span>
+            </div>
+          </div>
+        </aside>
+      </div>
     </section>
 
-    <!-- Resumo Profissional -->
-    <section id="resumo" class="py-20 relative border-t border-white/5 bg-secondary/30">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 space-y-4 animate-on-scroll">
-                <h2 class="text-sm font-bold tracking-wider text-neon uppercase" data-i18n="summary.label">Sobre Mim</h2>
-                <h3 class="text-3xl md:text-4xl font-heading font-bold text-white" data-i18n="summary.title">Resumo Profissional</h3>
-            </div>
-            
-            <div class="glass-card p-8 md:p-12 rounded-3xl animate-on-scroll">
-                <p class="text-lg text-gray-300 leading-relaxed mb-6" data-i18n-html="summary.p1">
-                    Profissional de <strong class="text-white">Infraestrutura Cloud, Monitoramento e Operações</strong> com mais de 10 anos de experiência em sustentação de ambientes, troubleshooting de aplicações e infraestrutura, monitoramento proativo, resposta a incidentes e automação operacional. Atuação com ambientes Windows e Linux, suporte técnico N2/N3, cloud computing, observabilidade, análise de causa raiz e documentação técnica.
-                </p>
-                <p class="text-lg text-gray-300 leading-relaxed" data-i18n-html="summary.p2">
-                    Experiência em administração de ambientes distribuídos, acompanhamento de desempenho, criação de dashboards e apoio à confiabilidade de serviços por meio de práticas de <strong class="text-white">SRE e DevOps</strong>. Vivência com automação de processos, integração contínua, análise de logs, suporte a aplicações, gestão de incidentes e colaboração com equipes multidisciplinares para melhoria contínua da estabilidade, eficiência e segurança dos ambientes.
-                </p>
-            </div>
+    <section id="sobre" class="section">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <span class="section__eyebrow">Sobre mim</span>
+          <h2 class="section__title">Estrutura clara para mostrar valor profissional</h2>
+          <p class="section__desc">
+            A ideia aqui foi transformar o portfólio em uma vitrine objetiva: primeiro o posicionamento, depois os projetos, depois as conquistas e por fim as recomendações que fortalecem sua imagem profissional.
+          </p>
         </div>
+
+        <div class="about__grid">
+          <article class="panel reveal">
+            <h3>Infraestrutura e cloud</h3>
+            <p>Experiência com ambientes híbridos, Windows, Linux, suporte N2/N3, administração cloud e resolução de problemas em produção com foco em estabilidade.</p>
+            <div class="chips">
+              <span class="chip">Azure</span>
+              <span class="chip">AWS</span>
+              <span class="chip">GCP</span>
+              <span class="chip">OCI</span>
+            </div>
+          </article>
+
+          <article class="panel reveal">
+            <h3>Monitoramento e observabilidade</h3>
+            <p>Atuação com dashboards, alertas, análise de causa raiz e ferramentas que ajudam times a detectar falhas mais cedo e reduzir indisponibilidade.</p>
+            <div class="chips">
+              <span class="chip">Grafana</span>
+              <span class="chip">Zabbix</span>
+              <span class="chip">Prometheus</span>
+              <span class="chip">GLPI</span>
+            </div>
+          </article>
+
+          <article class="panel reveal">
+            <h3>Automação e entrega</h3>
+            <p>Uso de scripts, CI/CD, IaC, Docker e Kubernetes para reduzir tarefas manuais, padronizar processos e acelerar entregas com menos risco.</p>
+            <div class="chips">
+              <span class="chip">CI/CD</span>
+              <span class="chip">IaC</span>
+              <span class="chip">Docker</span>
+              <span class="chip">Kubernetes</span>
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <!-- Competências-Chave -->
-    <section id="competencias" class="py-20 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 space-y-4 animate-on-scroll">
-                <h2 class="text-sm font-bold tracking-wider text-neon uppercase" data-i18n="skills.label">Expertise</h2>
-                <h3 class="text-3xl md:text-4xl font-heading font-bold text-white" data-i18n="skills.title">Competências-Chave</h3>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Skill Group 1: Infra & Cloud -->
-                <div class="glass-card p-6 rounded-2xl animate-on-scroll">
-                    <div class="w-12 h-12 rounded-lg bg-accent/20 flex items-center justify-center mb-4 text-accent">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-4" data-i18n="skills.cloud.title">Cloud & Infraestrutura</h4>
-                    <ul class="space-y-2 text-gray-400 text-sm">
-                        <li class="flex items-start gap-2"><span class="text-neon">▹</span> <span data-i18n="skills.cloud.i1">Sustentação de ambientes cloud e híbridos</span></li>
-                        <li class="flex items-start gap-2"><span class="text-neon">▹</span> <span data-i18n="skills.cloud.i2">Linux e Windows Server</span></li>
-                        <li class="flex items-start gap-2"><span class="text-neon">▹</span> <span data-i18n="skills.cloud.i3">Ambientes distribuídos</span></li>
-                        <li class="flex items-start gap-2"><span class="text-neon">▹</span> <span data-i18n="skills.cloud.i4">Azure, AWS, GCP, OCI</span></li>
-                    </ul>
-                </div>
-
-                <!-- Skill Group 2: Monitoramento & SRE -->
-                <div class="glass-card p-6 rounded-2xl animate-on-scroll delay-100">
-                    <div class="w-12 h-12 rounded-lg bg-neon/20 flex items-center justify-center mb-4 text-neon">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-4" data-i18n="skills.monitor.title">Monitoramento & Observabilidade</h4>
-                    <ul class="space-y-2 text-gray-400 text-sm">
-                        <li class="flex items-start gap-2"><span class="text-neon">▹</span> <span data-i18n="skills.monitor.i1">Observabilidade e Dashboards</span></li>
-                        <li class="flex items-start gap-2"><span class="text-neon">▹</span> <span data-i18n="skills.monitor.i2">Resposta a incidentes e análise de causa raiz</span></li>
-                        <li class="flex items-start gap-2"><span class="text-neon">▹</span> <span data-i18n="skills.monitor.i3">Zabbix, Grafana, Prometheus, GLPI</span></li>
-                        <li class="flex items-start gap-2"><span class="text-neon">▹</span> <span data-i18n="skills.monitor.i4">SRE, Troubleshooting de aplicações/infra</span></li>
-                    </ul>
-                </div>
-
-                <!-- Skill Group 3: DevOps & Automacao -->
-                <div class="glass-card p-6 rounded-2xl animate-on-scroll delay-200">
-                    <div class="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center mb-4 text-purple-400">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-4" data-i18n="skills.auto.title">Automação & Redes</h4>
-                    <ul class="space-y-2 text-gray-400 text-sm">
-                        <li class="flex items-start gap-2"><span class="text-neon">▹</span> <span data-i18n="skills.auto.i1">Automação operacional e scripts</span></li>
-                        <li class="flex items-start gap-2"><span class="text-neon">▹</span> <span data-i18n="skills.auto.i2">CI/CD e automação de pipelines</span></li>
-                        <li class="flex items-start gap-2"><span class="text-neon">▹</span> <span data-i18n="skills.auto.i3">Segurança da Informação e conformidade</span></li>
-                        <li class="flex items-start gap-2"><span class="text-neon">▹</span> <span data-i18n="skills.auto.i4">Redes (DNS, DHCP, TCP/IP, UDP, SNMP)</span></li>
-                        <li class="flex items-start gap-2"><span class="text-neon">▹</span> <span data-i18n="skills.auto.i5">DB: PostgreSQL, MySQL, SQL Server</span></li>
-                        <li class="flex items-start gap-2"><span class="text-neon">▹</span> <span data-i18n="skills.auto.i6">Docker, Kubernetes, containerização</span></li>
-                    </ul>
-                </div>
-            </div>
+    <section id="projetos" class="section">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <span class="section__eyebrow">GitHub</span>
+          <h2 class="section__title">Projetos em destaque</h2>
+          <p class="section__desc">
+            Selecionei repositórios públicos do seu GitHub para transformar a página em prova prática do que você constrói. Os textos abaixo são curtos e diretos para ajudar recrutadores a entenderem rápido o contexto de cada projeto.
+          </p>
         </div>
+
+        <div class="projects__grid">
+          <article class="card project reveal">
+            <div class="project__top">
+              <div>
+                <h3 class="project__title">nexa-sdk</h3>
+                <div class="project__meta">Biblioteca/SDK para integrações e automação de fluxos.</div>
+              </div>
+              <span class="chip">SDK</span>
+            </div>
+            <div class="chips">
+              <span class="chip">Integração</span>
+              <span class="chip">Automação</span>
+              <span class="chip">API</span>
+            </div>
+            <a class="project__link" href="https://github.com/pcsouzafv/nexa-sdk" target="_blank" rel="noopener noreferrer">Abrir repositório ↗</a>
+          </article>
+
+          <article class="card project reveal">
+            <div class="project__top">
+              <div>
+                <h3 class="project__title">azure-mcp-server</h3>
+                <div class="project__meta">Servidor para integrações com o ecossistema Azure e ferramentas conectadas.</div>
+              </div>
+              <span class="chip">Azure</span>
+            </div>
+            <div class="chips">
+              <span class="chip">Cloud</span>
+              <span class="chip">MCP</span>
+              <span class="chip">Infra</span>
+            </div>
+            <a class="project__link" href="https://github.com/pcsouzafv/azure-mcp-server" target="_blank" rel="noopener noreferrer">Abrir repositório ↗</a>
+          </article>
+
+          <article class="card project reveal">
+            <div class="project__top">
+              <div>
+                <h3 class="project__title">MonitoringVMSS</h3>
+                <div class="project__meta">Projeto voltado a monitoramento e operação de ambientes escaláveis.</div>
+              </div>
+              <span class="chip">Observability</span>
+            </div>
+            <div class="chips">
+              <span class="chip">Azure</span>
+              <span class="chip">Monitoring</span>
+              <span class="chip">VMSS</span>
+            </div>
+            <a class="project__link" href="https://github.com/pcsouzafv/MonitoringVMSS" target="_blank" rel="noopener noreferrer">Abrir repositório ↗</a>
+          </article>
+
+          <article class="card project reveal">
+            <div class="project__top">
+              <div>
+                <h3 class="project__title">ForumHub_2.0</h3>
+                <div class="project__meta">Aplicação de estudo focada em APIs, tópicos e interação de usuários.</div>
+              </div>
+              <span class="chip">Backend</span>
+            </div>
+            <div class="chips">
+              <span class="chip">API</span>
+              <span class="chip">Java</span>
+              <span class="chip">Estudo</span>
+            </div>
+            <a class="project__link" href="https://github.com/pcsouzafv/ForumHub_2.0" target="_blank" rel="noopener noreferrer">Abrir repositório ↗</a>
+          </article>
+
+          <article class="card project reveal">
+            <div class="project__top">
+              <div>
+                <h3 class="project__title">Curso-docker-kubernetes</h3>
+                <div class="project__meta">Base prática para estudos em containers, orquestração e entrega moderna.</div>
+              </div>
+              <span class="chip">DevOps</span>
+            </div>
+            <div class="chips">
+              <span class="chip">Docker</span>
+              <span class="chip">Kubernetes</span>
+              <span class="chip">CI/CD</span>
+            </div>
+            <a class="project__link" href="https://github.com/pcsouzafv/Curso-docker-kubernetes" target="_blank" rel="noopener noreferrer">Abrir repositório ↗</a>
+          </article>
+
+          <article class="card project reveal">
+            <div class="project__top">
+              <div>
+                <h3 class="project__title">Script_Linux_Debian</h3>
+                <div class="project__meta">Coleção de scripts e automações para Linux e rotinas de administração.</div>
+              </div>
+              <span class="chip">Linux</span>
+            </div>
+            <div class="chips">
+              <span class="chip">Shell</span>
+              <span class="chip">Automação</span>
+              <span class="chip">Debian</span>
+            </div>
+            <a class="project__link" href="https://github.com/pcsouzafv/Script_Linux_Debian" target="_blank" rel="noopener noreferrer">Abrir repositório ↗</a>
+          </article>
+        </div>
+
+        <div class="card reveal project__more">
+          <h3 class="project__title">Outros repositórios públicos no GitHub</h3>
+          <p class="project__meta">Também vale destacar projetos como <strong>PCRICARDO</strong>, <strong>PythonFundamentos</strong>, <strong>cripto2</strong>, <strong>literalura</strong>, <strong>devboard-alura</strong>, <strong>API-REST-com-SpringBoote-MySQL-F-rum-Hub-</strong>, <strong>HEALTHIA-IA-M-dica-de-Diagn-stico</strong> e <strong>Plataforma-de-ensino-de-idiomas</strong>.</p>
+          <a class="project__link" href="https://github.com/pcsouzafv" target="_blank" rel="noopener noreferrer">Ver todos os repositórios ↗</a>
+        </div>
+      </div>
     </section>
 
-    <!-- Experiência Profissional (Timeline) -->
-    <section id="experiencia" class="py-20 relative border-t border-white/5 bg-secondary/30">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 space-y-4 animate-on-scroll">
-                <h2 class="text-sm font-bold tracking-wider text-neon uppercase" data-i18n="exp.label">Trajetória</h2>
-                <h3 class="text-3xl md:text-4xl font-heading font-bold text-white" data-i18n="exp.title">Experiência Profissional</h3>
-            </div>
-
-            <div class="relative py-8">
-                <div class="timeline-line"></div>
-                
-                <!-- Job 1 -->
-                <div class="timeline-item relative mb-12 md:mb-24 md:w-1/2 md:pr-12 md:text-right animate-on-scroll">
-                    <div class="timeline-dot"></div>
-                    <div class="glass-card p-6 rounded-2xl">
-                        <span class="inline-block py-1 px-3 rounded-full bg-accent/20 text-accent text-xs font-bold mb-3">Mar/2025 – Jan/2026</span>
-                        <h4 class="text-xl font-bold text-white mb-1" data-i18n="exp.job1.role">Analista de Infraestrutura Sênior</h4>
-                        <h5 class="text-neon font-medium mb-4">Afya</h5>
-                        <ul class="space-y-2 text-gray-400 text-sm text-left md:text-right" dir="ltr">
-                            <li><span class="text-neon opacity-0 md:opacity-100"></span> <span data-i18n="exp.job1.i1">Sustentação e administração de ambientes cloud em Azure.</span> <span class="text-neon md:hidden">▹</span></li>
-                            <li><span class="text-neon opacity-0 md:opacity-100"></span> <span data-i18n="exp.job1.i2">Monitoramento proativo, estabilização de ambientes.</span> <span class="text-neon md:hidden">▹</span></li>
-                            <li><span class="text-neon opacity-0 md:opacity-100"></span> <span data-i18n="exp.job1.i3">Automação com scripts e IaC, reduzindo falhas manuais.</span> <span class="text-neon md:hidden">▹</span></li>
-                            <li><span class="text-neon opacity-0 md:opacity-100"></span> <span data-i18n="exp.job1.i4">Implantação de CI/CD via Azure DevOps.</span> <span class="text-neon md:hidden">▹</span></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Job 2 -->
-                <div class="timeline-item relative mb-12 md:mb-24 md:w-1/2 md:ml-auto md:pl-12 animate-on-scroll">
-                    <div class="timeline-dot"></div>
-                    <div class="glass-card p-6 rounded-2xl">
-                        <span class="inline-block py-1 px-3 rounded-full bg-accent/20 text-accent text-xs font-bold mb-3">Set/2024</span>
-                        <h4 class="text-xl font-bold text-white mb-1" data-i18n="exp.job2.role">Analista de Monitoramento Sênior</h4>
-                        <h5 class="text-neon font-medium mb-4">ART IT Intelligent Technology</h5>
-                        <ul class="space-y-2 text-gray-400 text-sm text-left">
-                            <li class="flex items-start gap-2"><span class="text-neon">▹</span> <span data-i18n="exp.job2.i1">Implementação e configuração de ferramentas (Zabbix, Grafana, Prometheus).</span></li>
-                            <li class="flex items-start gap-2"><span class="text-neon">▹</span> <span data-i18n="exp.job2.i2">Resposta a alertas, incidentes e root cause analysis.</span></li>
-                            <li class="flex items-start gap-2"><span class="text-neon">▹</span> <span data-i18n="exp.job2.i3">Criação de relatórios e dashboards operacionais.</span></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Job 3 -->
-                <div class="timeline-item relative mb-12 md:mb-24 md:w-1/2 md:pr-12 md:text-right animate-on-scroll">
-                    <div class="timeline-dot"></div>
-                    <div class="glass-card p-6 rounded-2xl">
-                        <span class="inline-block py-1 px-3 rounded-full bg-accent/20 text-accent text-xs font-bold mb-3">Out/2022 – Abr/2024</span>
-                        <h4 class="text-xl font-bold text-white mb-1" data-i18n="exp.job1.role">Analista de Infraestrutura Sênior</h4>
-                        <h5 class="text-neon font-medium mb-4">DaVita Kidney Care</h5>
-                        <ul class="space-y-2 text-gray-400 text-sm text-left md:text-right" dir="ltr">
-                            <li><span class="text-neon opacity-0 md:opacity-100"></span> <span data-i18n="exp.job3.i1">Sustentação de ambientes híbridos e estabilidade operacional.</span> <span class="text-neon md:hidden">▹</span></li>
-                            <li><span class="text-neon opacity-0 md:opacity-100"></span> <span data-i18n="exp.job3.i2">Troubleshooting de infra e cloud, resolução de falhas.</span> <span class="text-neon md:hidden">▹</span></li>
-                            <li><span class="text-neon opacity-0 md:opacity-100"></span> <span data-i18n="exp.job3.i3">Automação (GPOs, integrações) e mentoria técnica.</span> <span class="text-neon md:hidden">▹</span></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Job 4 -->
-                <div class="timeline-item relative mb-12 md:mb-24 md:w-1/2 md:ml-auto md:pl-12 animate-on-scroll">
-                    <div class="timeline-dot"></div>
-                    <div class="glass-card p-6 rounded-2xl">
-                        <span class="inline-block py-1 px-3 rounded-full bg-accent/20 text-accent text-xs font-bold mb-3">Nov/2019 – Out/2022</span>
-                        <h4 class="text-xl font-bold text-white mb-1" data-i18n="exp.job4.role">Analista de Infraestrutura e Segurança</h4>
-                        <h5 class="text-neon font-medium mb-4">Laboratório Canonne</h5>
-                        <ul class="space-y-2 text-gray-400 text-sm text-left">
-                            <li class="flex items-start gap-2"><span class="text-neon">▹</span> <span data-i18n="exp.job4.i1">Administração Cloud e M365.</span></li>
-                            <li class="flex items-start gap-2"><span class="text-neon">▹</span> <span data-i18n="exp.job4.i2">Gestão de segurança e conformidade com LGPD.</span></li>
-                            <li class="flex items-start gap-2"><span class="text-neon">▹</span> <span data-i18n="exp.job4.i3">Planejamento e implementação de soluções técnicas.</span></li>
-                        </ul>
-                    </div>
-                </div>
-                
-                 <!-- Job 5 -->
-                 <div class="timeline-item relative mb-12 md:mb-24 md:w-1/2 md:pr-12 md:text-right animate-on-scroll">
-                    <div class="timeline-dot"></div>
-                    <div class="glass-card p-6 rounded-2xl">
-                        <span class="inline-block py-1 px-3 rounded-full bg-accent/20 text-accent text-xs font-bold mb-3">Fev/2019 – Ago/2019</span>
-                        <h4 class="text-xl font-bold text-white mb-1" data-i18n="exp.job5.role">Arquiteto de Soluções (Freelance)</h4>
-                        <h5 class="text-neon font-medium mb-4">Lojas Citycol S/A</h5>
-                        <ul class="space-y-2 text-gray-400 text-sm text-left md:text-right" dir="ltr">
-                            <li><span class="text-neon opacity-0 md:opacity-100"></span> <span data-i18n="exp.job5.i1">Implantação de LinxPos-e.</span> <span class="text-neon md:hidden">▹</span></li>
-                            <li><span class="text-neon opacity-0 md:opacity-100"></span> <span data-i18n="exp.job5.i2">DataSync, ETL, D-TEF, SQL Server.</span> <span class="text-neon md:hidden">▹</span></li>
-                            <li><span class="text-neon opacity-0 md:opacity-100"></span> <span data-i18n="exp.job5.i3">Administração de servidores Azure.</span> <span class="text-neon md:hidden">▹</span></li>
-                        </ul>
-                    </div>
-                </div>
-
-                 <!-- Job 6 -->
-                 <div class="timeline-item relative mb-12 md:w-1/2 md:ml-auto md:pl-12 animate-on-scroll">
-                    <div class="timeline-dot"></div>
-                    <div class="glass-card p-6 rounded-2xl">
-                        <span class="inline-block py-1 px-3 rounded-full bg-accent/20 text-accent text-xs font-bold mb-3">Out/2013 – Ago/2018</span>
-                        <h4 class="text-xl font-bold text-white mb-1" data-i18n="exp.job6.role">Analista de Infraestrutura e Suporte</h4>
-                        <h5 class="text-neon font-medium mb-4">Dormakaba / Task Sistemas</h5>
-                        <ul class="space-y-2 text-gray-400 text-sm text-left">
-                            <li class="flex items-start gap-2"><span class="text-neon">▹</span> <span data-i18n="exp.job6.i1">Suporte N2/N3 corporativo.</span></li>
-                            <li class="flex items-start gap-2"><span class="text-neon">▹</span> <span data-i18n="exp.job6.i2">Troubleshooting e suporte a usuários/sistemas corporativos.</span></li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
+    <section id="conquistas" class="section">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <span class="section__eyebrow">Conquistas</span>
+          <h2 class="section__title">Formação, certificações e marcos</h2>
+          <p class="section__desc">
+            Esta seção deixa mais fácil provar consistência e evolução técnica sem depender só de texto longo.
+          </p>
         </div>
+
+        <div class="achievements__grid">
+          <article class="card achievement reveal">
+            <div class="badge">01</div>
+            <div>
+              <h4>Formação acadêmica</h4>
+              <p>Pós-graduação em Cybersecurity e graduação em Análise e Desenvolvimento de Sistemas.</p>
+            </div>
+          </article>
+
+          <article class="card achievement reveal">
+            <div class="badge">02</div>
+            <div>
+              <h4>Certificações e estudos</h4>
+              <p>Azure, Microsoft Cybersecurity Analyst, ISC2 CC, Google Cybersecurity, AWS, GCP, DevOps, Terraform e OCI.</p>
+            </div>
+          </article>
+
+          <article class="card achievement reveal">
+            <div class="badge">03</div>
+            <div>
+              <h4>Operação em ambientes críticos</h4>
+              <p>Experiência com sustentação, monitoramento, incidentes, documentação técnica e apoio a times multidisciplinares.</p>
+            </div>
+          </article>
+
+          <article class="card achievement reveal">
+            <div class="badge">04</div>
+            <div>
+              <h4>Stack técnica ampla</h4>
+              <p>Cloud, Linux, Windows, redes, bancos, containers, observabilidade e automação em um único perfil.</p>
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <!-- Educação e Certificações -->
-    <section id="formacao" class="py-20 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-12">
-                <!-- Academic -->
-                <div>
-                    <div class="mb-10 animate-on-scroll">
-                        <h2 class="text-sm font-bold tracking-wider text-neon uppercase mb-2" data-i18n="edu.label">Educação</h2>
-                        <h3 class="text-3xl font-heading font-bold text-white" data-i18n="edu.title">Formação Acadêmica</h3>
-                    </div>
-                    <div class="space-y-6">
-                        <div class="glass-card p-6 rounded-2xl animate-on-scroll border-l-4 border-l-accent">
-                            <h4 class="text-lg font-bold text-white" data-i18n="edu.degree1">Pós-Graduação em Cybersecurity</h4>
-                            <p class="text-neon text-sm mt-1">Faculdade UniBF</p>
-                        </div>
-                        <div class="glass-card p-6 rounded-2xl animate-on-scroll border-l-4 border-l-neon">
-                            <h4 class="text-lg font-bold text-white" data-i18n="edu.degree2">Graduação em Análise e Desenvolvimento de Sistemas</h4>
-                            <p class="text-neon text-sm mt-1">Universidade Estácio de Sá</p>
-                        </div>
-                    </div>
-
-                    <div class="mt-12 mb-10 animate-on-scroll">
-                        <h3 class="text-3xl font-heading font-bold text-white" data-i18n="edu.languages">Idiomas</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-4 animate-on-scroll">
-                        <span class="px-4 py-2 rounded-full glass text-sm font-medium"><span class="text-neon" data-i18n="edu.lang.en.label">Inglês:</span> <span data-i18n="edu.lang.en.level">B1 (em desenvolvimento)</span></span>
-                        <span class="px-4 py-2 rounded-full glass text-sm font-medium"><span class="text-neon" data-i18n="edu.lang.es.label">Espanhol:</span> <span data-i18n="edu.lang.es.level">Básico</span></span>
-                    </div>
-                </div>
-
-                <!-- Certifications -->
-                <div>
-                    <div class="mb-10 animate-on-scroll">
-                        <h2 class="text-sm font-bold tracking-wider text-accent uppercase mb-2" data-i18n="cert.label">Conquistas</h2>
-                        <h3 class="text-3xl font-heading font-bold text-white" data-i18n="cert.title">Certificações e Cursos</h3>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="glass-card p-4 rounded-xl flex items-center gap-3 animate-on-scroll">
-                            <div class="w-2 h-2 rounded-full bg-accent"></div>
-                            <span class="text-gray-300 text-sm font-medium">Microsoft Azure</span>
-                        </div>
-                        <div class="glass-card p-4 rounded-xl flex items-center gap-3 animate-on-scroll">
-                            <div class="w-2 h-2 rounded-full bg-neon"></div>
-                            <span class="text-gray-300 text-sm font-medium">Microsoft Cybersecurity Analyst</span>
-                        </div>
-                        <div class="glass-card p-4 rounded-xl flex items-center gap-3 animate-on-scroll">
-                            <div class="w-2 h-2 rounded-full bg-purple-500"></div>
-                            <span class="text-gray-300 text-sm font-medium">ISC2 CC</span>
-                        </div>
-                        <div class="glass-card p-4 rounded-xl flex items-center gap-3 animate-on-scroll">
-                            <div class="w-2 h-2 rounded-full bg-accent"></div>
-                            <span class="text-gray-300 text-sm font-medium">Google Cybersecurity Pro</span>
-                        </div>
-                        <div class="glass-card p-4 rounded-xl flex items-center gap-3 animate-on-scroll">
-                            <div class="w-2 h-2 rounded-full bg-neon"></div>
-                            <span class="text-gray-300 text-sm font-medium">Formação AWS</span>
-                        </div>
-                        <div class="glass-card p-4 rounded-xl flex items-center gap-3 animate-on-scroll">
-                            <div class="w-2 h-2 rounded-full bg-purple-500"></div>
-                            <span class="text-gray-300 text-sm font-medium">Google Cloud Platform</span>
-                        </div>
-                        <div class="glass-card p-4 rounded-xl flex items-center gap-3 animate-on-scroll">
-                            <div class="w-2 h-2 rounded-full bg-accent"></div>
-                            <span class="text-gray-300 text-sm font-medium">DevOps, CI/CD, Terraform</span>
-                        </div>
-                        <div class="glass-card p-4 rounded-xl flex items-center gap-3 animate-on-scroll">
-                            <div class="w-2 h-2 rounded-full bg-neon animate-pulse"></div>
-                            <span class="text-gray-300 text-sm font-medium">CompTIA Security+ <em class="text-xs text-gray-500">(em andamento)</em></span>
-                        </div>
-                        <div class="glass-card p-4 rounded-xl flex items-center gap-3 animate-on-scroll">
-                            <div class="w-2 h-2 rounded-full bg-orange-400"></div>
-                            <span class="text-gray-300 text-sm font-medium">Oracle Cloud Infrastructure 2025 Certified Foundations Associate</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section id="recomendacoes" class="section">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <span class="section__eyebrow">Recomendações</span>
+          <h2 class="section__title">O que este perfil transmite com clareza</h2>
+          <p class="section__desc">
+            Como você não me passou depoimentos textuais reais, eu organizei esta parte como recomendações de posicionamento profissional. Se você quiser, depois eu posso trocar isso por quotes verdadeiros de colegas e líderes.
+          </p>
         </div>
+
+        <div class="trust__grid">
+          <article class="card recommendation reveal">
+            <span class="recommendation__label">Confiabilidade</span>
+            <h3 class="project__title">Foco em estabilidade e resposta rápida</h3>
+            <p>Boa escolha para times que precisam de alguém pragmático, com leitura de incidente, monitoramento e priorização de impacto.</p>
+          </article>
+
+          <article class="card recommendation reveal">
+            <span class="recommendation__label">Autonomia</span>
+            <h3 class="project__title">Resolve, documenta e entrega</h3>
+            <p>Perfil forte para ambientes em que a pessoa precisa investigar, automatizar, registrar e compartilhar o que foi feito.</p>
+          </article>
+
+          <article class="card recommendation reveal">
+            <span class="recommendation__label">Colaboração</span>
+            <h3 class="project__title">Boa ponte entre operação e tecnologia</h3>
+            <p>Comunica bem com suporte, infraestrutura, desenvolvimento e segurança, o que ajuda em contextos multidisciplinares.</p>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <!-- Contato -->
-    <section id="contato" class="py-24 relative border-t border-white/5 bg-gradient-to-b from-secondary/30 to-primary">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-sm font-bold tracking-wider text-neon uppercase mb-4 animate-on-scroll" data-i18n="contact.label">Pronto para novos desafios</h2>
-            <h3 class="text-4xl md:text-5xl font-heading font-bold text-white mb-8 animate-on-scroll" data-i18n="contact.title">Vamos Conversar?</h3>
-            <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto animate-on-scroll" data-i18n="contact.desc">
-                Estou sempre aberto a novas oportunidades na área de Cloud, Infraestrutura e SRE. Sinta-se à vontade para entrar em contato.
-            </p>
-
-            <div class="flex flex-col md:flex-row gap-6 justify-center animate-on-scroll">
-                <a href="mailto:rickpcsouza@hotmail.com" class="glass-card p-6 rounded-2xl flex flex-col items-center gap-3 hover:-translate-y-2 transition-transform group">
-                    <svg class="w-8 h-8 text-accent group-hover:text-neon transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                    <span class="text-white font-medium" data-i18n="contact.email">E-mail Pessoal</span>
-                    <span class="text-sm text-gray-400">rickpcsouza@hotmail.com</span>
-                </a>
-                <a href="https://wa.me/5532999384534" target="_blank" class="glass-card p-6 rounded-2xl flex flex-col items-center gap-3 hover:-translate-y-2 transition-transform group">
-                    <svg class="w-8 h-8 text-neon group-hover:text-accent transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                    <span class="text-white font-medium" data-i18n="contact.phone">Telefone / WhatsApp</span>
-                    <span class="text-sm text-gray-400">(32) 99938-4534</span>
-                </a>
-                <a href="https://www.linkedin.com/in/pcricardo2024/" target="_blank" class="glass-card p-6 rounded-2xl flex flex-col items-center gap-3 hover:-translate-y-2 transition-transform group">
-                    <svg class="w-8 h-8 text-purple-400 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                    <span class="text-white font-medium">LinkedIn</span>
-                    <span class="text-sm text-gray-400">/in/pcricardo2024/</span>
-                </a>
-            </div>
-            <div class="mt-8 text-center text-sm text-gray-500">
-                <p>E-mail alternativo: pcsouzafv@gmail.com</p>
-            </div>
+    <section id="contato" class="section">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <span class="section__eyebrow">Contato</span>
+          <h2 class="section__title">Vamos conversar sobre a próxima oportunidade</h2>
+          <p class="section__desc">
+            Se a vaga envolver cloud, observabilidade, automação, suporte, segurança ou melhoria de operação, este portfólio já comunica boa parte do seu valor.
+          </p>
         </div>
+
+        <div class="contact__grid">
+          <a class="card contact__card reveal" href="mailto:rickpcsouza@hotmail.com">
+            <strong>E-mail</strong>
+            <span class="project__meta">rickpcsouza@hotmail.com</span>
+            <span class="project__link">Enviar mensagem ↗</span>
+          </a>
+
+          <a class="card contact__card reveal" href="https://wa.me/5532999384534" target="_blank" rel="noopener noreferrer">
+            <strong>WhatsApp</strong>
+            <span class="project__meta">(32) 99938-4534</span>
+            <span class="project__link">Abrir conversa ↗</span>
+          </a>
+
+          <a class="card contact__card reveal" href="https://www.linkedin.com/in/pcricardo2024/" target="_blank" rel="noopener noreferrer">
+            <strong>LinkedIn</strong>
+            <span class="project__meta">/in/pcricardo2024/</span>
+            <span class="project__link">Ver perfil ↗</span>
+          </a>
+        </div>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-8 border-t border-white/10 text-center text-sm text-gray-500">
-        <p>&copy; 2026 Ricardo Santana de Souza. <span data-i18n="footer.rights">Todos os direitos reservados.</span></p>
+    <footer class="footer">
+      <div class="wrap footer__inner">
+        <span>© 2026 Ricardo Santana de Souza</span>
+        <span>Cloud, infraestrutura, monitoramento e projetos no GitHub</span>
+      </div>
     </footer>
+  </main>
 
-    <!-- i18n Translations -->
-    <script>
-        const translations = {
-            pt: {
-                'nav.summary': 'Resumo',
-                'nav.skills': 'Competências',
-                'nav.experience': 'Experiência',
-                'nav.education': 'Formação',
-                'nav.contact': 'Contato',
-                'hero.badge': 'Disponível para oportunidades (Brasil / Internacional / Remoto)',
-                'hero.subtitle': 'Infraestrutura Cloud, Monitoramento e Operações',
-                'hero.cta': 'Falar Comigo',
-                'summary.label': 'Sobre Mim',
-                'summary.title': 'Resumo Profissional',
-                'summary.p1': 'Profissional de <strong class="text-white">Infraestrutura Cloud, Monitoramento e Operações</strong> com mais de 10 anos de experiência em sustentação de ambientes, troubleshooting de aplicações e infraestrutura, monitoramento proativo, resposta a incidentes e automação operacional. Atuação com ambientes Windows e Linux, suporte técnico N2/N3, cloud computing, observabilidade, análise de causa raiz e documentação técnica.',
-                'summary.p2': 'Experiência em administração de ambientes distribuídos, acompanhamento de desempenho, criação de dashboards e apoio à confiabilidade de serviços por meio de práticas de <strong class="text-white">SRE e DevOps</strong>. Vivência com automação de processos, integração contínua, análise de logs, suporte a aplicações, gestão de incidentes e colaboração com equipes multidisciplinares para melhoria contínua da estabilidade, eficiência e segurança dos ambientes.',
-                'skills.label': 'Expertise',
-                'skills.title': 'Competências-Chave',
-                'skills.cloud.title': 'Cloud & Infraestrutura',
-                'skills.cloud.i1': 'Sustentação de ambientes cloud e híbridos',
-                'skills.cloud.i2': 'Linux e Windows Server',
-                'skills.cloud.i3': 'Ambientes distribuídos',
-                'skills.cloud.i4': 'Azure, AWS, GCP, OCI',
-                'skills.monitor.title': 'Monitoramento & Observabilidade',
-                'skills.monitor.i1': 'Observabilidade e Dashboards',
-                'skills.monitor.i2': 'Resposta a incidentes e análise de causa raiz',
-                'skills.monitor.i3': 'Zabbix, Grafana, Prometheus, GLPI',
-                'skills.monitor.i4': 'SRE, Troubleshooting de aplicações/infra',
-                'skills.auto.title': 'Automação & Redes',
-                'skills.auto.i1': 'Automação operacional e scripts',
-                'skills.auto.i2': 'CI/CD e automação de pipelines',
-                'skills.auto.i3': 'Segurança da Informação e conformidade',
-                'skills.auto.i4': 'Redes (DNS, DHCP, TCP/IP, UDP, SNMP)',
-                'skills.auto.i5': 'DB: PostgreSQL, MySQL, SQL Server',
-                'skills.auto.i6': 'Docker, Kubernetes, containerização',
-                'exp.label': 'Trajetória',
-                'exp.title': 'Experiência Profissional',
-                'exp.job1.role': 'Analista de Infraestrutura Sênior',
-                'exp.job1.i1': 'Sustentação e administração de ambientes cloud em Azure.',
-                'exp.job1.i2': 'Monitoramento proativo, estabilização de ambientes.',
-                'exp.job1.i3': 'Automação com scripts e IaC, reduzindo falhas manuais.',
-                'exp.job1.i4': 'Implantação de CI/CD via Azure DevOps.',
-                'exp.job2.role': 'Analista de Monitoramento Sênior',
-                'exp.job2.i1': 'Implementação e configuração de ferramentas (Zabbix, Grafana, Prometheus).',
-                'exp.job2.i2': 'Resposta a alertas, incidentes e root cause analysis.',
-                'exp.job2.i3': 'Criação de relatórios e dashboards operacionais.',
-                'exp.job3.i1': 'Sustentação de ambientes híbridos e estabilidade operacional.',
-                'exp.job3.i2': 'Troubleshooting de infra e cloud, resolução de falhas.',
-                'exp.job3.i3': 'Automação (GPOs, integrações) e mentoria técnica.',
-                'exp.job4.role': 'Analista de Infraestrutura e Segurança',
-                'exp.job4.i1': 'Administração Cloud e M365.',
-                'exp.job4.i2': 'Gestão de segurança e conformidade com LGPD.',
-                'exp.job4.i3': 'Planejamento e implementação de soluções técnicas.',
-                'exp.job5.role': 'Arquiteto de Soluções (Freelance)',
-                'exp.job5.i1': 'Implantação de LinxPos-e.',
-                'exp.job5.i2': 'DataSync, ETL, D-TEF, SQL Server.',
-                'exp.job5.i3': 'Administração de servidores Azure.',
-                'exp.job6.role': 'Analista de Infraestrutura e Suporte',
-                'exp.job6.i1': 'Suporte N2/N3 corporativo.',
-                'exp.job6.i2': 'Troubleshooting e suporte a usuários/sistemas corporativos.',
-                'edu.label': 'Educação',
-                'edu.title': 'Formação Acadêmica',
-                'edu.degree1': 'Pós-Graduação em Cybersecurity',
-                'edu.degree2': 'Graduação em Análise e Desenvolvimento de Sistemas',
-                'edu.languages': 'Idiomas',
-                'edu.lang.en.label': 'Inglês:',
-                'edu.lang.en.level': 'B1 (em desenvolvimento)',
-                'edu.lang.es.label': 'Espanhol:',
-                'edu.lang.es.level': 'Básico',
-                'cert.label': 'Conquistas',
-                'cert.title': 'Certificações e Cursos',
-                'contact.label': 'Pronto para novos desafios',
-                'contact.title': 'Vamos Conversar?',
-                'contact.desc': 'Estou sempre aberto a novas oportunidades na área de Cloud, Infraestrutura e SRE. Sinta-se à vontade para entrar em contato.',
-                'contact.email': 'E-mail Pessoal',
-                'contact.phone': 'Telefone / WhatsApp',
-                'footer.rights': 'Todos os direitos reservados.'
-            },
-            en: {
-                'nav.summary': 'Summary',
-                'nav.skills': 'Skills',
-                'nav.experience': 'Experience',
-                'nav.education': 'Education',
-                'nav.contact': 'Contact',
-                'hero.badge': 'Open to opportunities (Brazil / International / Remote)',
-                'hero.subtitle': 'Cloud Infrastructure, Monitoring & Operations',
-                'hero.cta': 'Get in Touch',
-                'summary.label': 'About Me',
-                'summary.title': 'Professional Summary',
-                'summary.p1': 'Cloud Infrastructure, Monitoring & Operations professional with over 10 years of experience in environment support, application and infrastructure troubleshooting, proactive monitoring, incident response, and operational automation. Skilled in Windows and Linux environments, N2/N3 technical support, cloud computing, observability, root cause analysis, and technical documentation.',
-                'summary.p2': 'Experienced in managing distributed environments, performance tracking, dashboard creation, and supporting service reliability through <strong class="text-white">SRE and DevOps</strong> practices. Background in process automation, continuous integration, log analysis, application support, incident management, and cross-functional collaboration to continuously improve stability, efficiency, and security.',
-                'skills.label': 'Expertise',
-                'skills.title': 'Core Skills',
-                'skills.cloud.title': 'Cloud & Infrastructure',
-                'skills.cloud.i1': 'Cloud and hybrid environment support',
-                'skills.cloud.i2': 'Linux and Windows Server',
-                'skills.cloud.i3': 'Distributed environments',
-                'skills.cloud.i4': 'Azure, AWS, GCP, OCI',
-                'skills.monitor.title': 'Monitoring & Observability',
-                'skills.monitor.i1': 'Observability and Dashboards',
-                'skills.monitor.i2': 'Incident response and root cause analysis',
-                'skills.monitor.i3': 'Zabbix, Grafana, Prometheus, GLPI',
-                'skills.monitor.i4': 'SRE, Application/Infrastructure Troubleshooting',
-                'skills.auto.title': 'Automation & Networking',
-                'skills.auto.i1': 'Operational automation and scripting',
-                'skills.auto.i2': 'CI/CD and pipeline automation',
-                'skills.auto.i3': 'Information Security and compliance',
-                'skills.auto.i4': 'Networking (DNS, DHCP, TCP/IP, UDP, SNMP)',
-                'skills.auto.i5': 'DB: PostgreSQL, MySQL, SQL Server',
-                'skills.auto.i6': 'Docker, Kubernetes, containerization',
-                'exp.label': 'Career Path',
-                'exp.title': 'Professional Experience',
-                'exp.job1.role': 'Senior Infrastructure Analyst',
-                'exp.job1.i1': 'Support and administration of cloud environments on Azure.',
-                'exp.job1.i2': 'Proactive monitoring and environment stabilization.',
-                'exp.job1.i3': 'Automation with scripts and IaC, reducing manual failures.',
-                'exp.job1.i4': 'CI/CD implementation via Azure DevOps.',
-                'exp.job2.role': 'Senior Monitoring Analyst',
-                'exp.job2.i1': 'Implementation and configuration of tools (Zabbix, Grafana, Prometheus).',
-                'exp.job2.i2': 'Alert response, incident handling, and root cause analysis.',
-                'exp.job2.i3': 'Creation of operational reports and dashboards.',
-                'exp.job3.i1': 'Support of hybrid environments and operational stability.',
-                'exp.job3.i2': 'Infrastructure and cloud troubleshooting, failure resolution.',
-                'exp.job3.i3': 'Automation (GPOs, integrations) and technical mentoring.',
-                'exp.job4.role': 'Infrastructure & Security Analyst',
-                'exp.job4.i1': 'Cloud and M365 administration.',
-                'exp.job4.i2': 'Security management and LGPD compliance.',
-                'exp.job4.i3': 'Planning and implementation of technical solutions.',
-                'exp.job5.role': 'Solutions Architect (Freelance)',
-                'exp.job5.i1': 'LinxPos-e deployment.',
-                'exp.job5.i2': 'DataSync, ETL, D-TEF, SQL Server.',
-                'exp.job5.i3': 'Azure server administration.',
-                'exp.job6.role': 'Infrastructure & Support Analyst',
-                'exp.job6.i1': 'Corporate N2/N3 support.',
-                'exp.job6.i2': 'Troubleshooting and support for users and corporate systems.',
-                'edu.label': 'Education',
-                'edu.title': 'Academic Background',
-                'edu.degree1': 'Postgraduate in Cybersecurity',
-                'edu.degree2': 'Bachelor in Systems Analysis and Development',
-                'edu.languages': 'Languages',
-                'edu.lang.en.label': 'English:',
-                'edu.lang.en.level': 'B1 (developing)',
-                'edu.lang.es.label': 'Spanish:',
-                'edu.lang.es.level': 'Basic',
-                'cert.label': 'Achievements',
-                'cert.title': 'Certifications & Courses',
-                'contact.label': 'Ready for new challenges',
-                'contact.title': "Let's Talk?",
-                'contact.desc': 'I am always open to new opportunities in Cloud, Infrastructure and SRE. Feel free to get in touch.',
-                'contact.email': 'Personal Email',
-                'contact.phone': 'Phone / WhatsApp',
-                'footer.rights': 'All rights reserved.'
-            },
-            es: {
-                'nav.summary': 'Resumen',
-                'nav.skills': 'Habilidades',
-                'nav.experience': 'Experiencia',
-                'nav.education': 'Formación',
-                'nav.contact': 'Contacto',
-                'hero.badge': 'Disponible para oportunidades (Brasil / Internacional / Remoto)',
-                'hero.subtitle': 'Infraestructura Cloud, Monitoreo y Operaciones',
-                'hero.cta': 'Contáctame',
-                'summary.label': 'Sobre Mí',
-                'summary.title': 'Resumen Profesional',
-                'summary.p1': 'Profesional de <strong class="text-white">Infraestructura Cloud, Monitoreo y Operaciones</strong> con más de 10 años de experiencia en soporte de entornos, resolución de problemas de aplicaciones e infraestructura, monitoreo proactivo, respuesta a incidentes y automatización operativa. Experiencia en entornos Windows y Linux, soporte técnico N2/N3, computación en la nube, observabilidad, análisis de causa raíz y documentación técnica.',
-                'summary.p2': 'Experiencia en administración de entornos distribuidos, seguimiento del rendimiento, creación de dashboards y apoyo a la confiabilidad de servicios a través de prácticas de <strong class="text-white">SRE y DevOps</strong>. Conocimiento en automatización de procesos, integración continua, análisis de logs, soporte de aplicaciones, gestión de incidentes y colaboración con equipos multidisciplinarios para la mejora continua de la estabilidad, eficiencia y seguridad.',
-                'skills.label': 'Expertise',
-                'skills.title': 'Habilidades Clave',
-                'skills.cloud.title': 'Cloud & Infraestructura',
-                'skills.cloud.i1': 'Soporte de entornos cloud e híbridos',
-                'skills.cloud.i2': 'Linux y Windows Server',
-                'skills.cloud.i3': 'Entornos distribuidos',
-                'skills.cloud.i4': 'Azure, AWS, GCP, OCI',
-                'skills.monitor.title': 'Monitoreo & Observabilidad',
-                'skills.monitor.i1': 'Observabilidad y Dashboards',
-                'skills.monitor.i2': 'Respuesta a incidentes y análisis de causa raíz',
-                'skills.monitor.i3': 'Zabbix, Grafana, Prometheus, GLPI',
-                'skills.monitor.i4': 'SRE, Troubleshooting de aplicaciones/infra',
-                'skills.auto.title': 'Automatización & Redes',
-                'skills.auto.i1': 'Automatización operativa y scripts',
-                'skills.auto.i2': 'CI/CD y automatización de pipelines',
-                'skills.auto.i3': 'Seguridad de la Información y cumplimiento',
-                'skills.auto.i4': 'Redes (DNS, DHCP, TCP/IP, UDP, SNMP)',
-                'skills.auto.i5': 'DB: PostgreSQL, MySQL, SQL Server',
-                'skills.auto.i6': 'Docker, Kubernetes, contenedores',
-                'exp.label': 'Trayectoria',
-                'exp.title': 'Experiencia Profesional',
-                'exp.job1.role': 'Analista de Infraestructura Senior',
-                'exp.job1.i1': 'Soporte y administración de entornos cloud en Azure.',
-                'exp.job1.i2': 'Monitoreo proactivo y estabilización de entornos.',
-                'exp.job1.i3': 'Automatización con scripts e IaC, reduciendo errores manuales.',
-                'exp.job1.i4': 'Implementación de CI/CD mediante Azure DevOps.',
-                'exp.job2.role': 'Analista de Monitoreo Senior',
-                'exp.job2.i1': 'Implementación y configuración de herramientas (Zabbix, Grafana, Prometheus).',
-                'exp.job2.i2': 'Respuesta a alertas, incidentes y análisis de causa raíz.',
-                'exp.job2.i3': 'Creación de informes y dashboards operativos.',
-                'exp.job3.i1': 'Soporte de entornos híbridos y estabilidad operativa.',
-                'exp.job3.i2': 'Troubleshooting de infra y cloud, resolución de fallos.',
-                'exp.job3.i3': 'Automatización (GPOs, integraciones) y mentoría técnica.',
-                'exp.job4.role': 'Analista de Infraestructura y Seguridad',
-                'exp.job4.i1': 'Administración Cloud y M365.',
-                'exp.job4.i2': 'Gestión de seguridad y conformidad con LGPD.',
-                'exp.job4.i3': 'Planificación e implementación de soluciones técnicas.',
-                'exp.job5.role': 'Arquitecto de Soluciones (Freelance)',
-                'exp.job5.i1': 'Implementación de LinxPos-e.',
-                'exp.job5.i2': 'DataSync, ETL, D-TEF, SQL Server.',
-                'exp.job5.i3': 'Administración de servidores Azure.',
-                'exp.job6.role': 'Analista de Infraestructura y Soporte',
-                'exp.job6.i1': 'Soporte corporativo N2/N3.',
-                'exp.job6.i2': 'Troubleshooting y soporte a usuarios y sistemas corporativos.',
-                'edu.label': 'Educación',
-                'edu.title': 'Formación Académica',
-                'edu.degree1': 'Posgrado en Ciberseguridad',
-                'edu.degree2': 'Graduación en Análisis y Desarrollo de Sistemas',
-                'edu.languages': 'Idiomas',
-                'edu.lang.en.label': 'Inglés:',
-                'edu.lang.en.level': 'B1 (en desarrollo)',
-                'edu.lang.es.label': 'Español:',
-                'edu.lang.es.level': 'Básico',
-                'cert.label': 'Logros',
-                'cert.title': 'Certificaciones y Cursos',
-                'contact.label': 'Listo para nuevos desafíos',
-                'contact.title': '¿Hablamos?',
-                'contact.desc': 'Siempre estoy abierto a nuevas oportunidades en Cloud, Infraestructura y SRE. No dudes en ponerte en contacto.',
-                'contact.email': 'Correo Personal',
-                'contact.phone': 'Teléfono / WhatsApp',
-                'footer.rights': 'Todos los derechos reservados.'
-            }
-        };
-
-        let currentLang = localStorage.getItem('lang') || 'pt';
-
-        function applyTranslations(lang) {
-            const t = translations[lang];
-            if (!t) return;
-            document.documentElement.lang = lang;
-            // Text translations
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (t[key] !== undefined) el.textContent = t[key];
-            });
-            // HTML translations (allow <strong> etc.)
-            document.querySelectorAll('[data-i18n-html]').forEach(el => {
-                const key = el.getAttribute('data-i18n-html');
-                if (t[key] !== undefined) el.innerHTML = t[key];
-            });
-            // Update lang indicator
-            const labels = { pt: 'PT', en: 'EN', es: 'ES' };
-            const langCurrent = document.getElementById('lang-current');
-            if (langCurrent) langCurrent.textContent = labels[lang] || lang.toUpperCase();
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
         }
+      });
+    }, { threshold: 0.14 });
 
-        function setLang(lang) {
-            currentLang = lang;
-            localStorage.setItem('lang', lang);
-            applyTranslations(lang);
-            const menu = document.getElementById('lang-menu');
-            if (menu) menu.classList.add('hidden');
-        }
-
-        // Lang dropdown toggle
-        document.addEventListener('DOMContentLoaded', () => {
-            const langBtn = document.getElementById('lang-btn');
-            const langMenu = document.getElementById('lang-menu');
-            if (langBtn && langMenu) {
-                langBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    langMenu.classList.toggle('hidden');
-                });
-                document.addEventListener('click', () => langMenu.classList.add('hidden'));
-            }
-            applyTranslations(currentLang);
-        });
-    </script>
-
-    <!-- Scripts -->
-    <script>
-        // Mobile menu toggle
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-        
-        // Hide mobile menu on link click
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.add('hidden');
-            });
-        });
-
-        // Navbar blur effect on scroll
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) {
-                navbar.classList.add('shadow-lg', 'bg-primary/80');
-                navbar.classList.remove('bg-transparent');
-            } else {
-                navbar.classList.remove('shadow-lg', 'bg-primary/80');
-                navbar.classList.add('bg-transparent');
-            }
-        });
-
-        // Scroll reveals
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-fade-in-up');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.animate-on-scroll').forEach((el) => {
-            el.style.opacity = '0'; // Initial state mapped out in CSS class as well
-            observer.observe(el);
-        });
-    </script>
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  </script>
 </body>
 </html>
