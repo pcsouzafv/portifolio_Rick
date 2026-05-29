@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfólio de Ricardo Souza - Cloud, infraestrutura, monitoramento, automação e projetos no GitHub.">
-  <title>Ricardo Souza | Cloud, Infra & GitHub Projects</title>
+  <meta name="description" content="Portfólio de Ricardo Santana - Cloud, infraestrutura, monitoramento, automação e projetos no GitHub.">
+  <title>Ricardo Santana | Cloud, Infra & GitHub Projects</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -110,6 +110,42 @@
     }
 
     .nav__links a:hover { color: var(--text); }
+
+    .lang-switcher {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .lang-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: 34px;
+      border: 0;
+      border-radius: 999px;
+      padding: 7px 10px;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      font-size: 0.86rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .2s ease, color .2s ease;
+    }
+
+    .lang-btn:hover,
+    .lang-btn.is-active {
+      background: rgba(125, 211, 252, 0.14);
+      color: var(--text);
+    }
+
+    .lang-btn__flag { font-size: 1rem; line-height: 1; }
 
     .hero {
       padding: 54px 0 32px;
@@ -359,6 +395,9 @@
     .project {
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
     }
 
     .project::before {
@@ -372,6 +411,30 @@
     }
 
     .project:hover::before { opacity: 1; }
+
+    .project__visual {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .project__visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.08) contrast(1.05);
+    }
+
+    .project__visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 42%, rgba(5, 12, 22, 0.72));
+      pointer-events: none;
+    }
 
     .project__top {
       display: flex;
@@ -389,6 +452,33 @@
       color: var(--muted);
       font-size: 0.92rem;
       line-height: 1.6;
+    }
+
+    .project__details {
+      display: grid;
+      gap: 12px;
+    }
+
+    .project__detail {
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .project__detail strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--text);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .project__detail span {
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 0.92rem;
     }
 
     .project__link {
@@ -544,6 +634,10 @@
         align-items: flex-start;
         flex-direction: column;
       }
+
+      .nav__links {
+        justify-content: flex-start;
+      }
     }
 
     @media (max-width: 640px) {
@@ -556,6 +650,13 @@
         gap: 12px;
         font-size: 0.88rem;
       }
+      .lang-switcher {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .lang-btn {
+        flex: 1;
+      }
       .section { padding: 58px 0; }
       .panel, .card, .stat { padding: 18px; }
     }
@@ -566,14 +667,29 @@
     <div class="wrap nav__inner">
       <a class="brand" href="#top" aria-label="Ir para o topo">
         <span class="brand__mark">RS</span>
-        <span>Ricardo Souza</span>
+        <span>Ricardo Santana</span>
       </a>
       <nav class="nav__links" aria-label="Navegação principal">
-        <a href="#sobre">Sobre</a>
-        <a href="#projetos">Projetos</a>
-        <a href="#conquistas">Conquistas</a>
-        <a href="#recomendacoes">Recomendações</a>
-        <a href="#contato">Contato</a>
+        <a href="#sobre" data-i18n="nav.about">Sobre</a>
+        <a href="#projetos" data-i18n="nav.projects">Projetos</a>
+        <a href="#experiencia" data-i18n="nav.experience">Experiência</a>
+        <a href="#conquistas" data-i18n="nav.credentials">Credenciais</a>
+        <a href="#recomendacoes" data-i18n="nav.differentials">Diferenciais</a>
+        <a href="#contato" data-i18n="nav.contact">Contato</a>
+        <div class="lang-switcher" aria-label="Escolher idioma">
+          <button class="lang-btn is-active" type="button" data-lang="pt-BR" aria-pressed="true">
+            <span class="lang-btn__flag" aria-hidden="true">🇧🇷</span>
+            PT
+          </button>
+          <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">
+            <span class="lang-btn__flag" aria-hidden="true">🇺🇸</span>
+            EN
+          </button>
+          <button class="lang-btn" type="button" data-lang="es" aria-pressed="false">
+            <span class="lang-btn__flag" aria-hidden="true">🇪🇸</span>
+            ES
+          </button>
+        </div>
       </nav>
     </div>
   </header>
@@ -582,47 +698,47 @@
     <section class="hero">
       <div class="wrap hero__grid">
         <div class="reveal">
-          <div class="eyebrow"><span class="eyebrow__dot"></span> Disponível para oportunidades em Cloud, Infra e Observabilidade</div>
-          <h1>
+          <div class="eyebrow"><span class="eyebrow__dot"></span> <span data-i18n="hero.eyebrow">Disponível para oportunidades em Cloud, Infra e Observabilidade</span></div>
+          <h1 data-i18n-html="hero.title">
             Portfólio com foco em <span class="gradient-text">resultado, automação e confiabilidade</span>
           </h1>
-          <p class="hero__lead">
-            Sou Ricardo Souza, profissional de infraestrutura, monitoramento e operações com mais de 10 anos de experiência em ambientes cloud, suporte técnico, resposta a incidentes e automação. Este portfólio organiza minha trajetória, destaca projetos do GitHub e mostra as conquistas que reforçam meu perfil.
+          <p class="hero__lead" data-i18n="hero.lead">
+            Sou Ricardo Santana, profissional de infraestrutura, cloud, segurança operacional e observabilidade. Transformo problemas de suporte e operação em ambientes mais confiáveis, monitoráveis e automatizados, com documentação clara e foco em continuidade de serviço.
           </p>
 
           <div class="hero__actions">
             <a class="btn btn--primary" href="https://github.com/pcsouzafv" target="_blank" rel="noopener noreferrer">
-              Ver GitHub
+              <span data-i18n="hero.github">Ver GitHub</span>
               <span aria-hidden="true">↗</span>
             </a>
             <a class="btn btn--ghost" href="mailto:rickpcsouza@hotmail.com">
-              Falar comigo
+              <span data-i18n="hero.contact">Falar comigo</span>
             </a>
           </div>
 
           <div class="hero__stats">
             <div class="stat">
               <span class="stat__value">10+ anos</span>
-              <span class="stat__label">atuando com infraestrutura, suporte e operações.</span>
+              <span class="stat__label" data-i18n="stats.years">em infraestrutura, suporte técnico e operações.</span>
             </div>
             <div class="stat">
-              <span class="stat__value">Cloud + SRE</span>
-              <span class="stat__label">Azure, AWS, GCP, monitoramento e confiabilidade.</span>
+              <span class="stat__value">Cloud + Ops</span>
+              <span class="stat__label" data-i18n="stats.cloud">Azure, AWS, GCP, observabilidade e confiabilidade.</span>
             </div>
             <div class="stat">
-              <span class="stat__value">GitHub</span>
-              <span class="stat__label">projetos públicos em automação, dados, estudos e apps.</span>
+              <span class="stat__value">DevOps</span>
+              <span class="stat__label" data-i18n="stats.devops">automação, containers, IaC e melhoria contínua.</span>
             </div>
           </div>
         </div>
 
         <aside class="profile reveal">
           <div class="profile__image">
-            <img src="./img/euLinkedin.jpeg" alt="Foto de Ricardo Souza">
+            <img src="./img/euLinkedin.jpeg" alt="Foto de Ricardo Santana">
           </div>
           <div class="profile__meta">
-            <h3>Ricardo Santana de Souza</h3>
-            <p>Cloud, monitoramento, automação e segurança operacional. Perfil orientado a solução, documentação e estabilidade de serviço.</p>
+            <h3>Ricardo Santana</h3>
+            <p data-i18n="profile.summary">Cloud, infraestrutura, observabilidade e segurança operacional. Perfil prático, orientado a solução, documentação e estabilidade de serviço.</p>
             <div class="chips">
               <span class="chip"><span class="dot"></span> Azure</span>
               <span class="chip"><span class="dot"></span> Grafana</span>
@@ -639,17 +755,17 @@
     <section id="sobre" class="section">
       <div class="wrap">
         <div class="section__head reveal">
-          <span class="section__eyebrow">Sobre mim</span>
-          <h2 class="section__title">Estrutura clara para mostrar valor profissional</h2>
-          <p class="section__desc">
-            A ideia aqui foi transformar o portfólio em uma vitrine objetiva: primeiro o posicionamento, depois os projetos, depois as conquistas e por fim as recomendações que fortalecem sua imagem profissional.
+          <span class="section__eyebrow" data-i18n="about.eyebrow">Sobre mim</span>
+          <h2 class="section__title" data-i18n="about.title">Operação, cloud e automação trabalhando juntas</h2>
+          <p class="section__desc" data-i18n="about.desc">
+            Atuo conectando infraestrutura, suporte, observabilidade e segurança para reduzir falhas recorrentes, acelerar diagnósticos e criar rotinas mais previsíveis para times técnicos.
           </p>
         </div>
 
         <div class="about__grid">
           <article class="panel reveal">
-            <h3>Infraestrutura e cloud</h3>
-            <p>Experiência com ambientes híbridos, Windows, Linux, suporte N2/N3, administração cloud e resolução de problemas em produção com foco em estabilidade.</p>
+            <h3 data-i18n="about.card1.title">Infraestrutura e cloud</h3>
+            <p data-i18n="about.card1.text">Experiência com ambientes híbridos, Windows, Linux, suporte N2/N3, administração cloud e resolução de problemas em produção com foco em estabilidade.</p>
             <div class="chips">
               <span class="chip">Azure</span>
               <span class="chip">AWS</span>
@@ -659,8 +775,8 @@
           </article>
 
           <article class="panel reveal">
-            <h3>Monitoramento e observabilidade</h3>
-            <p>Atuação com dashboards, alertas, análise de causa raiz e ferramentas que ajudam times a detectar falhas mais cedo e reduzir indisponibilidade.</p>
+            <h3 data-i18n="about.card2.title">Monitoramento e observabilidade</h3>
+            <p data-i18n="about.card2.text">Atuação com dashboards, alertas, análise de causa raiz e ferramentas que ajudam times a detectar falhas mais cedo e reduzir indisponibilidade.</p>
             <div class="chips">
               <span class="chip">Grafana</span>
               <span class="chip">Zabbix</span>
@@ -670,8 +786,8 @@
           </article>
 
           <article class="panel reveal">
-            <h3>Automação e entrega</h3>
-            <p>Uso de scripts, CI/CD, IaC, Docker e Kubernetes para reduzir tarefas manuais, padronizar processos e acelerar entregas com menos risco.</p>
+            <h3 data-i18n="about.card3.title">Automação e entrega</h3>
+            <p data-i18n="about.card3.text">Uso de scripts, CI/CD, IaC, Docker e Kubernetes para reduzir tarefas manuais, padronizar processos e acelerar entregas com menos risco.</p>
             <div class="chips">
               <span class="chip">CI/CD</span>
               <span class="chip">IaC</span>
@@ -687,18 +803,21 @@
       <div class="wrap">
         <div class="section__head reveal">
           <span class="section__eyebrow">GitHub</span>
-          <h2 class="section__title">Projetos em destaque</h2>
-          <p class="section__desc">
-            Selecionei repositórios públicos do seu GitHub para transformar a página em prova prática do que você constrói. Os textos abaixo são curtos e diretos para ajudar recrutadores a entenderem rápido o contexto de cada projeto.
+          <h2 class="section__title" data-i18n="projects.title">Projetos em destaque</h2>
+          <p class="section__desc" data-i18n="projects.desc">
+            Repositórios públicos que mostram prática em cloud, automação, backend, containers, observabilidade e experimentos com IA aplicada.
           </p>
         </div>
 
         <div class="projects__grid">
           <article class="card project reveal">
+            <div class="project__visual">
+              <img src="https://opengraph.githubassets.com/portfolio-rs-nexa/pcsouzafv/nexa-sdk" alt="Preview visual do repositório nexa-sdk" loading="lazy">
+            </div>
             <div class="project__top">
               <div>
                 <h3 class="project__title">nexa-sdk</h3>
-                <div class="project__meta">Biblioteca/SDK para integrações e automação de fluxos.</div>
+                <div class="project__meta" data-i18n="project.nexa">Biblioteca/SDK para integrações e automação de fluxos.</div>
               </div>
               <span class="chip">SDK</span>
             </div>
@@ -707,14 +826,31 @@
               <span class="chip">Automação</span>
               <span class="chip">API</span>
             </div>
-            <a class="project__link" href="https://github.com/pcsouzafv/nexa-sdk" target="_blank" rel="noopener noreferrer">Abrir repositório ↗</a>
+            <div class="project__details">
+              <div class="project__detail">
+                <strong data-i18n="project.label.stack">Stack técnica</strong>
+                <span data-i18n="project.nexa.stack">SDK, APIs, integração entre serviços, organização de módulos e documentação para consumo por outros devs.</span>
+              </div>
+              <div class="project__detail">
+                <strong data-i18n="project.label.impact">Impacto</strong>
+                <span data-i18n="project.nexa.impact">Mostra capacidade de criar componentes reutilizáveis e reduzir retrabalho em integrações.</span>
+              </div>
+              <div class="project__detail">
+                <strong data-i18n="project.label.fit">Fit com empresas</strong>
+                <span data-i18n="project.nexa.fit">Bom sinal para times que trabalham com APIs internas, automação de processos e padronização técnica.</span>
+              </div>
+            </div>
+            <a class="project__link" href="https://github.com/pcsouzafv/nexa-sdk" target="_blank" rel="noopener noreferrer" data-i18n="projects.open">Abrir repositório ↗</a>
           </article>
 
           <article class="card project reveal">
+            <div class="project__visual">
+              <img src="https://opengraph.githubassets.com/portfolio-rs-azuremcp/pcsouzafv/azure-mcp-server" alt="Preview visual do repositório azure-mcp-server" loading="lazy">
+            </div>
             <div class="project__top">
               <div>
                 <h3 class="project__title">azure-mcp-server</h3>
-                <div class="project__meta">Servidor para integrações com o ecossistema Azure e ferramentas conectadas.</div>
+                <div class="project__meta" data-i18n="project.azureMcp">Servidor para integrações com o ecossistema Azure e ferramentas conectadas.</div>
               </div>
               <span class="chip">Azure</span>
             </div>
@@ -723,14 +859,31 @@
               <span class="chip">MCP</span>
               <span class="chip">Infra</span>
             </div>
-            <a class="project__link" href="https://github.com/pcsouzafv/azure-mcp-server" target="_blank" rel="noopener noreferrer">Abrir repositório ↗</a>
+            <div class="project__details">
+              <div class="project__detail">
+                <strong data-i18n="project.label.stack">Stack técnica</strong>
+                <span data-i18n="project.azureMcp.stack">Azure, MCP, APIs, autenticação, automação cloud e integração com ferramentas de operação.</span>
+              </div>
+              <div class="project__detail">
+                <strong data-i18n="project.label.impact">Impacto</strong>
+                <span data-i18n="project.azureMcp.impact">Conecta cloud e agentes/ferramentas modernas, reforçando visão de AI Ops e produtividade técnica.</span>
+              </div>
+              <div class="project__detail">
+                <strong data-i18n="project.label.fit">Fit com empresas</strong>
+                <span data-i18n="project.azureMcp.fit">Aderente a empresas que usam Azure, governança de infraestrutura e automação assistida por IA.</span>
+              </div>
+            </div>
+            <a class="project__link" href="https://github.com/pcsouzafv/azure-mcp-server" target="_blank" rel="noopener noreferrer" data-i18n="projects.open">Abrir repositório ↗</a>
           </article>
 
           <article class="card project reveal">
+            <div class="project__visual">
+              <img src="https://opengraph.githubassets.com/portfolio-rs-monitoring/pcsouzafv/MonitoringVMSS" alt="Preview visual do repositório MonitoringVMSS" loading="lazy">
+            </div>
             <div class="project__top">
               <div>
                 <h3 class="project__title">MonitoringVMSS</h3>
-                <div class="project__meta">Projeto voltado a monitoramento e operação de ambientes escaláveis.</div>
+                <div class="project__meta" data-i18n="project.monitoring">Projeto voltado a monitoramento e operação de ambientes escaláveis.</div>
               </div>
               <span class="chip">Observability</span>
             </div>
@@ -739,14 +892,31 @@
               <span class="chip">Monitoring</span>
               <span class="chip">VMSS</span>
             </div>
-            <a class="project__link" href="https://github.com/pcsouzafv/MonitoringVMSS" target="_blank" rel="noopener noreferrer">Abrir repositório ↗</a>
+            <div class="project__details">
+              <div class="project__detail">
+                <strong data-i18n="project.label.stack">Stack técnica</strong>
+                <span data-i18n="project.monitoring.stack">Azure VMSS, métricas, alertas, dashboards e práticas de observabilidade para escala.</span>
+              </div>
+              <div class="project__detail">
+                <strong data-i18n="project.label.impact">Impacto</strong>
+                <span data-i18n="project.monitoring.impact">Evidencia capacidade de acompanhar ambientes críticos e transformar sinais técnicos em ação.</span>
+              </div>
+              <div class="project__detail">
+                <strong data-i18n="project.label.fit">Fit com empresas</strong>
+                <span data-i18n="project.monitoring.fit">Conversa com operações, SRE, NOC e empresas com infraestrutura escalável em cloud.</span>
+              </div>
+            </div>
+            <a class="project__link" href="https://github.com/pcsouzafv/MonitoringVMSS" target="_blank" rel="noopener noreferrer" data-i18n="projects.open">Abrir repositório ↗</a>
           </article>
 
           <article class="card project reveal">
+            <div class="project__visual">
+              <img src="https://opengraph.githubassets.com/portfolio-rs-forumhub/pcsouzafv/ForumHub_2.0" alt="Preview visual do repositório ForumHub_2.0" loading="lazy">
+            </div>
             <div class="project__top">
               <div>
                 <h3 class="project__title">ForumHub_2.0</h3>
-                <div class="project__meta">Aplicação de estudo focada em APIs, tópicos e interação de usuários.</div>
+                <div class="project__meta" data-i18n="project.forum">Aplicação de estudo focada em APIs, tópicos e interação de usuários.</div>
               </div>
               <span class="chip">Backend</span>
             </div>
@@ -755,14 +925,31 @@
               <span class="chip">Java</span>
               <span class="chip">Estudo</span>
             </div>
-            <a class="project__link" href="https://github.com/pcsouzafv/ForumHub_2.0" target="_blank" rel="noopener noreferrer">Abrir repositório ↗</a>
+            <div class="project__details">
+              <div class="project__detail">
+                <strong data-i18n="project.label.stack">Stack técnica</strong>
+                <span data-i18n="project.forum.stack">Java, backend, API REST, modelagem de endpoints, persistência e regras de negócio.</span>
+              </div>
+              <div class="project__detail">
+                <strong data-i18n="project.label.impact">Impacto</strong>
+                <span data-i18n="project.forum.impact">Mostra base de desenvolvimento backend, importante para conversar melhor com squads de engenharia.</span>
+              </div>
+              <div class="project__detail">
+                <strong data-i18n="project.label.fit">Fit com empresas</strong>
+                <span data-i18n="project.forum.fit">Ajuda em vagas que pedem interface entre suporte, infraestrutura, APIs e times de desenvolvimento.</span>
+              </div>
+            </div>
+            <a class="project__link" href="https://github.com/pcsouzafv/ForumHub_2.0" target="_blank" rel="noopener noreferrer" data-i18n="projects.open">Abrir repositório ↗</a>
           </article>
 
           <article class="card project reveal">
+            <div class="project__visual">
+              <img src="https://opengraph.githubassets.com/portfolio-rs-dockerk8s/pcsouzafv/Curso-docker-kubernetes" alt="Preview visual do repositório Curso-docker-kubernetes" loading="lazy">
+            </div>
             <div class="project__top">
               <div>
                 <h3 class="project__title">Curso-docker-kubernetes</h3>
-                <div class="project__meta">Base prática para estudos em containers, orquestração e entrega moderna.</div>
+                <div class="project__meta" data-i18n="project.docker">Base prática para estudos em containers, orquestração e entrega moderna.</div>
               </div>
               <span class="chip">DevOps</span>
             </div>
@@ -771,14 +958,31 @@
               <span class="chip">Kubernetes</span>
               <span class="chip">CI/CD</span>
             </div>
-            <a class="project__link" href="https://github.com/pcsouzafv/Curso-docker-kubernetes" target="_blank" rel="noopener noreferrer">Abrir repositório ↗</a>
+            <div class="project__details">
+              <div class="project__detail">
+                <strong data-i18n="project.label.stack">Stack técnica</strong>
+                <span data-i18n="project.docker.stack">Docker, Kubernetes, containers, manifests, fundamentos de deploy e operação de workloads.</span>
+              </div>
+              <div class="project__detail">
+                <strong data-i18n="project.label.impact">Impacto</strong>
+                <span data-i18n="project.docker.impact">Reforça evolução para DevOps, empacotamento de aplicações e ambientes reproduzíveis.</span>
+              </div>
+              <div class="project__detail">
+                <strong data-i18n="project.label.fit">Fit com empresas</strong>
+                <span data-i18n="project.docker.fit">Boa aderência para empresas em modernização, migração cloud e adoção de containers.</span>
+              </div>
+            </div>
+            <a class="project__link" href="https://github.com/pcsouzafv/Curso-docker-kubernetes" target="_blank" rel="noopener noreferrer" data-i18n="projects.open">Abrir repositório ↗</a>
           </article>
 
           <article class="card project reveal">
+            <div class="project__visual">
+              <img src="https://opengraph.githubassets.com/portfolio-rs-linux/pcsouzafv/Script_Linux_Debian" alt="Preview visual do repositório Script_Linux_Debian" loading="lazy">
+            </div>
             <div class="project__top">
               <div>
                 <h3 class="project__title">Script_Linux_Debian</h3>
-                <div class="project__meta">Coleção de scripts e automações para Linux e rotinas de administração.</div>
+                <div class="project__meta" data-i18n="project.linux">Coleção de scripts e automações para Linux e rotinas de administração.</div>
               </div>
               <span class="chip">Linux</span>
             </div>
@@ -787,14 +991,28 @@
               <span class="chip">Automação</span>
               <span class="chip">Debian</span>
             </div>
-            <a class="project__link" href="https://github.com/pcsouzafv/Script_Linux_Debian" target="_blank" rel="noopener noreferrer">Abrir repositório ↗</a>
+            <div class="project__details">
+              <div class="project__detail">
+                <strong data-i18n="project.label.stack">Stack técnica</strong>
+                <span data-i18n="project.linux.stack">Shell, Linux Debian, automação de rotinas, administração de sistemas e scripts operacionais.</span>
+              </div>
+              <div class="project__detail">
+                <strong data-i18n="project.label.impact">Impacto</strong>
+                <span data-i18n="project.linux.impact">Demonstra capacidade de transformar tarefas repetitivas em procedimentos executáveis e documentados.</span>
+              </div>
+              <div class="project__detail">
+                <strong data-i18n="project.label.fit">Fit com empresas</strong>
+                <span data-i18n="project.linux.fit">Forte para ambientes de suporte, infraestrutura Linux, sustentação e times que valorizam automação simples.</span>
+              </div>
+            </div>
+            <a class="project__link" href="https://github.com/pcsouzafv/Script_Linux_Debian" target="_blank" rel="noopener noreferrer" data-i18n="projects.open">Abrir repositório ↗</a>
           </article>
         </div>
 
         <div class="card reveal project__more">
-          <h3 class="project__title">Outros repositórios públicos no GitHub</h3>
-          <p class="project__meta">Também vale destacar projetos como <strong>PCRICARDO</strong>, <strong>PythonFundamentos</strong>, <strong>cripto2</strong>, <strong>literalura</strong>, <strong>devboard-alura</strong>, <strong>API-REST-com-SpringBoote-MySQL-F-rum-Hub-</strong>, <strong>HEALTHIA-IA-M-dica-de-Diagn-stico</strong> e <strong>Plataforma-de-ensino-de-idiomas</strong>.</p>
-          <a class="project__link" href="https://github.com/pcsouzafv" target="_blank" rel="noopener noreferrer">Ver todos os repositórios ↗</a>
+          <h3 class="project__title" data-i18n="projects.moreTitle">Outros repositórios públicos no GitHub</h3>
+          <p class="project__meta" data-i18n-html="projects.moreText">Também vale destacar projetos como <strong>PCRICARDO</strong>, <strong>PythonFundamentos</strong>, <strong>cripto2</strong>, <strong>literalura</strong>, <strong>devboard-alura</strong>, <strong>API-REST-com-SpringBoote-MySQL-F-rum-Hub-</strong>, <strong>HEALTHIA-IA-M-dica-de-Diagn-stico</strong> e <strong>Plataforma-de-ensino-de-idiomas</strong>.</p>
+          <a class="project__link" href="https://github.com/pcsouzafv" target="_blank" rel="noopener noreferrer" data-i18n="projects.all">Ver todos os repositórios ↗</a>
         </div>
       </div>
     </section>
@@ -802,9 +1020,9 @@
     <section id="conquistas" class="section">
       <div class="wrap">
         <div class="section__head reveal">
-          <span class="section__eyebrow">Conquistas</span>
-          <h2 class="section__title">Formação, certificações e marcos</h2>
-          <p class="section__desc">
+          <span class="section__eyebrow" data-i18n="credentials.eyebrow">Credenciais</span>
+          <h2 class="section__title" data-i18n="credentials.title">Formação, certificações e marcos</h2>
+          <p class="section__desc" data-i18n="credentials.desc">
             Esta seção deixa mais fácil provar consistência e evolução técnica sem depender só de texto longo.
           </p>
         </div>
@@ -813,32 +1031,85 @@
           <article class="card achievement reveal">
             <div class="badge">01</div>
             <div>
-              <h4>Formação acadêmica</h4>
-              <p>Pós-graduação em Cybersecurity e graduação em Análise e Desenvolvimento de Sistemas.</p>
+              <h4 data-i18n="credentials.card1.title">Formação acadêmica</h4>
+              <p data-i18n="credentials.card1.text">Pós-graduação em Cybersecurity e graduação em Análise e Desenvolvimento de Sistemas.</p>
             </div>
           </article>
 
           <article class="card achievement reveal">
             <div class="badge">02</div>
             <div>
-              <h4>Certificações e estudos</h4>
-              <p>Azure, Microsoft Cybersecurity Analyst, ISC2 CC, Google Cybersecurity, AWS, GCP, DevOps, Terraform e OCI.</p>
+              <h4 data-i18n="credentials.card2.title">Certificações e estudos</h4>
+              <p data-i18n="credentials.card2.text">Azure, Microsoft Cybersecurity Analyst, ISC2 CC, Google Cybersecurity, AWS, GCP, DevOps, Terraform e OCI.</p>
             </div>
           </article>
 
           <article class="card achievement reveal">
             <div class="badge">03</div>
             <div>
-              <h4>Operação em ambientes críticos</h4>
-              <p>Experiência com sustentação, monitoramento, incidentes, documentação técnica e apoio a times multidisciplinares.</p>
+              <h4 data-i18n="credentials.card3.title">Operação em ambientes críticos</h4>
+              <p data-i18n="credentials.card3.text">Experiência com sustentação, monitoramento, incidentes, documentação técnica e apoio a times multidisciplinares.</p>
             </div>
           </article>
 
           <article class="card achievement reveal">
             <div class="badge">04</div>
             <div>
-              <h4>Stack técnica ampla</h4>
-              <p>Cloud, Linux, Windows, redes, bancos, containers, observabilidade e automação em um único perfil.</p>
+              <h4 data-i18n="credentials.card4.title">Stack técnica ampla</h4>
+              <p data-i18n="credentials.card4.text">Cloud, Linux, Windows, redes, bancos, containers, observabilidade e automação em um único perfil.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experiencia" class="section">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <span class="section__eyebrow" data-i18n="experience.eyebrow">Experiência</span>
+          <h2 class="section__title" data-i18n="experience.title">Trajetória orientada a suporte, estabilidade e melhoria operacional</h2>
+          <p class="section__desc" data-i18n="experience.desc">
+            Minha experiência reúne sustentação de ambientes, atendimento técnico, monitoramento, documentação e evolução de processos para apoiar operações mais estáveis.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline__item reveal">
+            <div class="timeline__date" data-i18n="experience.item1.date">Cloud e DevOps</div>
+            <div>
+              <h3 class="timeline__title" data-i18n="experience.item1.title">Infraestrutura, automação e observabilidade</h3>
+              <div class="timeline__company" data-i18n="experience.item1.company">Azure, AWS, GCP, containers, IaC e monitoramento</div>
+              <ul>
+                <li data-i18n="experience.item1.li1">Criação de rotinas para reduzir trabalho manual e padronizar atividades técnicas.</li>
+                <li data-i18n="experience.item1.li2">Configuração de dashboards, alertas e práticas de acompanhamento de ambientes.</li>
+                <li data-i18n="experience.item1.li3">Uso de GitHub, Docker, Kubernetes, Terraform e scripts para documentar e entregar soluções reproduzíveis.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline__item reveal">
+            <div class="timeline__date" data-i18n="experience.item2.date">Operações</div>
+            <div>
+              <h3 class="timeline__title" data-i18n="experience.item2.title">Suporte técnico, incidentes e sustentação</h3>
+              <div class="timeline__company" data-i18n="experience.item2.company">Windows, Linux, redes, GLPI, Zabbix, Grafana e Prometheus</div>
+              <ul>
+                <li data-i18n="experience.item2.li1">Atuação em suporte N2/N3, investigação de falhas e recuperação de serviços.</li>
+                <li data-i18n="experience.item2.li2">Registro técnico de procedimentos, diagnósticos e ações corretivas.</li>
+                <li data-i18n="experience.item2.li3">Comunicação com áreas de infraestrutura, desenvolvimento, segurança e usuários finais.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline__item reveal">
+            <div class="timeline__date" data-i18n="experience.item3.date">Segurança</div>
+            <div>
+              <h3 class="timeline__title" data-i18n="experience.item3.title">Cybersecurity e continuidade</h3>
+              <div class="timeline__company" data-i18n="experience.item3.company">Boas práticas, resposta a incidentes e análise operacional</div>
+              <ul>
+                <li data-i18n="experience.item3.li1">Visão de segurança aplicada à operação, com foco em prevenção, rastreabilidade e resposta.</li>
+                <li data-i18n="experience.item3.li2">Estudos e certificações em segurança, cloud e fundamentos de DevOps.</li>
+                <li data-i18n="experience.item3.li3">Apoio à melhoria de processos para diminuir recorrência de incidentes.</li>
+              </ul>
             </div>
           </article>
         </div>
@@ -848,30 +1119,30 @@
     <section id="recomendacoes" class="section">
       <div class="wrap">
         <div class="section__head reveal">
-          <span class="section__eyebrow">Recomendações</span>
-          <h2 class="section__title">O que este perfil transmite com clareza</h2>
-          <p class="section__desc">
-            Como você não me passou depoimentos textuais reais, eu organizei esta parte como recomendações de posicionamento profissional. Se você quiser, depois eu posso trocar isso por quotes verdadeiros de colegas e líderes.
+          <span class="section__eyebrow" data-i18n="diff.eyebrow">Diferenciais</span>
+          <h2 class="section__title" data-i18n="diff.title">Como contribuo dentro de um time técnico</h2>
+          <p class="section__desc" data-i18n="diff.desc">
+            Um perfil de operação forte precisa resolver o agora sem perder a chance de melhorar o próximo atendimento. É aqui que experiência prática, documentação e automação se encontram.
           </p>
         </div>
 
         <div class="trust__grid">
           <article class="card recommendation reveal">
-            <span class="recommendation__label">Confiabilidade</span>
-            <h3 class="project__title">Foco em estabilidade e resposta rápida</h3>
-            <p>Boa escolha para times que precisam de alguém pragmático, com leitura de incidente, monitoramento e priorização de impacto.</p>
+            <span class="recommendation__label" data-i18n="diff.card1.label">Confiabilidade</span>
+            <h3 class="project__title" data-i18n="diff.card1.title">Foco em estabilidade e resposta rápida</h3>
+            <p data-i18n="diff.card1.text">Investigo incidentes com senso de prioridade, impacto e continuidade, buscando restaurar o serviço e registrar aprendizados.</p>
           </article>
 
           <article class="card recommendation reveal">
-            <span class="recommendation__label">Autonomia</span>
-            <h3 class="project__title">Resolve, documenta e entrega</h3>
-            <p>Perfil forte para ambientes em que a pessoa precisa investigar, automatizar, registrar e compartilhar o que foi feito.</p>
+            <span class="recommendation__label" data-i18n="diff.card2.label">Autonomia</span>
+            <h3 class="project__title" data-i18n="diff.card2.title">Resolve, documenta e entrega</h3>
+            <p data-i18n="diff.card2.text">Tenho perfil prático para investigar, automatizar, registrar decisões técnicas e compartilhar procedimentos com o time.</p>
           </article>
 
           <article class="card recommendation reveal">
-            <span class="recommendation__label">Colaboração</span>
-            <h3 class="project__title">Boa ponte entre operação e tecnologia</h3>
-            <p>Comunica bem com suporte, infraestrutura, desenvolvimento e segurança, o que ajuda em contextos multidisciplinares.</p>
+            <span class="recommendation__label" data-i18n="diff.card3.label">Colaboração</span>
+            <h3 class="project__title" data-i18n="diff.card3.title">Boa ponte entre operação e tecnologia</h3>
+            <p data-i18n="diff.card3.text">Transito bem entre suporte, infraestrutura, desenvolvimento e segurança, facilitando alinhamentos em ambientes multidisciplinares.</p>
           </article>
         </div>
       </div>
@@ -880,10 +1151,10 @@
     <section id="contato" class="section">
       <div class="wrap">
         <div class="section__head reveal">
-          <span class="section__eyebrow">Contato</span>
-          <h2 class="section__title">Vamos conversar sobre a próxima oportunidade</h2>
-          <p class="section__desc">
-            Se a vaga envolver cloud, observabilidade, automação, suporte, segurança ou melhoria de operação, este portfólio já comunica boa parte do seu valor.
+          <span class="section__eyebrow" data-i18n="contact.eyebrow">Contato</span>
+          <h2 class="section__title" data-i18n="contact.title">Vamos conversar sobre a próxima oportunidade</h2>
+          <p class="section__desc" data-i18n="contact.desc">
+            Estou aberto a oportunidades em cloud, infraestrutura, DevOps, SRE, observabilidade, suporte avançado e segurança operacional.
           </p>
         </div>
 
@@ -891,19 +1162,19 @@
           <a class="card contact__card reveal" href="mailto:rickpcsouza@hotmail.com">
             <strong>E-mail</strong>
             <span class="project__meta">rickpcsouza@hotmail.com</span>
-            <span class="project__link">Enviar mensagem ↗</span>
+            <span class="project__link" data-i18n="contact.emailCta">Enviar mensagem ↗</span>
           </a>
 
           <a class="card contact__card reveal" href="https://wa.me/5532999384534" target="_blank" rel="noopener noreferrer">
             <strong>WhatsApp</strong>
             <span class="project__meta">(32) 99938-4534</span>
-            <span class="project__link">Abrir conversa ↗</span>
+            <span class="project__link" data-i18n="contact.whatsappCta">Abrir conversa ↗</span>
           </a>
 
-          <a class="card contact__card reveal" href="https://www.linkedin.com/in/pcricardo2024/" target="_blank" rel="noopener noreferrer">
+          <a class="card contact__card reveal" href="https://www.linkedin.com/in/ricardosantana2026" target="_blank" rel="noopener noreferrer">
             <strong>LinkedIn</strong>
-            <span class="project__meta">/in/pcricardo2024/</span>
-            <span class="project__link">Ver perfil ↗</span>
+            <span class="project__meta">/in/ricardosantana2026</span>
+            <span class="project__link" data-i18n="contact.linkedinCta">Ver perfil ↗</span>
           </a>
         </div>
       </div>
@@ -911,13 +1182,379 @@
 
     <footer class="footer">
       <div class="wrap footer__inner">
-        <span>© 2026 Ricardo Santana de Souza</span>
-        <span>Cloud, infraestrutura, monitoramento e projetos no GitHub</span>
+        <span>© 2026 Ricardo Santana</span>
+        <span data-i18n="footer.text">Cloud, infraestrutura, monitoramento e projetos no GitHub</span>
       </div>
     </footer>
   </main>
 
   <script>
+    const translations = {
+      "pt-BR": {
+        "nav.about": "Sobre",
+        "nav.projects": "Projetos",
+        "nav.experience": "Experiência",
+        "nav.credentials": "Credenciais",
+        "nav.differentials": "Diferenciais",
+        "nav.contact": "Contato",
+        "hero.eyebrow": "Disponível para oportunidades em Cloud, Infra e Observabilidade",
+        "hero.title": "Portfólio com foco em <span class=\"gradient-text\">resultado, automação e confiabilidade</span>",
+        "hero.lead": "Sou Ricardo Santana, profissional de infraestrutura, cloud, segurança operacional e observabilidade. Transformo problemas de suporte e operação em ambientes mais confiáveis, monitoráveis e automatizados, com documentação clara e foco em continuidade de serviço.",
+        "hero.github": "Ver GitHub",
+        "hero.contact": "Falar comigo",
+        "stats.years": "em infraestrutura, suporte técnico e operações.",
+        "stats.cloud": "Azure, AWS, GCP, observabilidade e confiabilidade.",
+        "stats.devops": "automação, containers, IaC e melhoria contínua.",
+        "profile.summary": "Cloud, infraestrutura, observabilidade e segurança operacional. Perfil prático, orientado a solução, documentação e estabilidade de serviço.",
+        "about.eyebrow": "Sobre mim",
+        "about.title": "Operação, cloud e automação trabalhando juntas",
+        "about.desc": "Atuo conectando infraestrutura, suporte, observabilidade e segurança para reduzir falhas recorrentes, acelerar diagnósticos e criar rotinas mais previsíveis para times técnicos.",
+        "about.card1.title": "Infraestrutura e cloud",
+        "about.card1.text": "Experiência com ambientes híbridos, Windows, Linux, suporte N2/N3, administração cloud e resolução de problemas em produção com foco em estabilidade.",
+        "about.card2.title": "Monitoramento e observabilidade",
+        "about.card2.text": "Atuação com dashboards, alertas, análise de causa raiz e ferramentas que ajudam times a detectar falhas mais cedo e reduzir indisponibilidade.",
+        "about.card3.title": "Automação e entrega",
+        "about.card3.text": "Uso de scripts, CI/CD, IaC, Docker e Kubernetes para reduzir tarefas manuais, padronizar processos e acelerar entregas com menos risco.",
+        "projects.title": "Projetos em destaque",
+        "projects.desc": "Repositórios públicos que mostram prática em cloud, automação, backend, containers, observabilidade e experimentos com IA aplicada.",
+        "projects.open": "Abrir repositório ↗",
+        "project.nexa": "Biblioteca/SDK para integrações e automação de fluxos.",
+        "project.azureMcp": "Servidor para integrações com o ecossistema Azure e ferramentas conectadas.",
+        "project.monitoring": "Projeto voltado a monitoramento e operação de ambientes escaláveis.",
+        "project.forum": "Aplicação de estudo focada em APIs, tópicos e interação de usuários.",
+        "project.docker": "Base prática para estudos em containers, orquestração e entrega moderna.",
+        "project.linux": "Coleção de scripts e automações para Linux e rotinas de administração.",
+        "project.label.stack": "Stack técnica",
+        "project.label.impact": "Impacto",
+        "project.label.fit": "Fit com empresas",
+        "project.nexa.stack": "SDK, APIs, integração entre serviços, organização de módulos e documentação para consumo por outros devs.",
+        "project.nexa.impact": "Mostra capacidade de criar componentes reutilizáveis e reduzir retrabalho em integrações.",
+        "project.nexa.fit": "Bom sinal para times que trabalham com APIs internas, automação de processos e padronização técnica.",
+        "project.azureMcp.stack": "Azure, MCP, APIs, autenticação, automação cloud e integração com ferramentas de operação.",
+        "project.azureMcp.impact": "Conecta cloud e agentes/ferramentas modernas, reforçando visão de AI Ops e produtividade técnica.",
+        "project.azureMcp.fit": "Aderente a empresas que usam Azure, governança de infraestrutura e automação assistida por IA.",
+        "project.monitoring.stack": "Azure VMSS, métricas, alertas, dashboards e práticas de observabilidade para escala.",
+        "project.monitoring.impact": "Evidencia capacidade de acompanhar ambientes críticos e transformar sinais técnicos em ação.",
+        "project.monitoring.fit": "Conversa com operações, SRE, NOC e empresas com infraestrutura escalável em cloud.",
+        "project.forum.stack": "Java, backend, API REST, modelagem de endpoints, persistência e regras de negócio.",
+        "project.forum.impact": "Mostra base de desenvolvimento backend, importante para conversar melhor com squads de engenharia.",
+        "project.forum.fit": "Ajuda em vagas que pedem interface entre suporte, infraestrutura, APIs e times de desenvolvimento.",
+        "project.docker.stack": "Docker, Kubernetes, containers, manifests, fundamentos de deploy e operação de workloads.",
+        "project.docker.impact": "Reforça evolução para DevOps, empacotamento de aplicações e ambientes reproduzíveis.",
+        "project.docker.fit": "Boa aderência para empresas em modernização, migração cloud e adoção de containers.",
+        "project.linux.stack": "Shell, Linux Debian, automação de rotinas, administração de sistemas e scripts operacionais.",
+        "project.linux.impact": "Demonstra capacidade de transformar tarefas repetitivas em procedimentos executáveis e documentados.",
+        "project.linux.fit": "Forte para ambientes de suporte, infraestrutura Linux, sustentação e times que valorizam automação simples.",
+        "projects.moreTitle": "Outros repositórios públicos no GitHub",
+        "projects.moreText": "Também vale destacar projetos como <strong>PCRICARDO</strong>, <strong>PythonFundamentos</strong>, <strong>cripto2</strong>, <strong>literalura</strong>, <strong>devboard-alura</strong>, <strong>API-REST-com-SpringBoote-MySQL-F-rum-Hub-</strong>, <strong>HEALTHIA-IA-M-dica-de-Diagn-stico</strong> e <strong>Plataforma-de-ensino-de-idiomas</strong>.",
+        "projects.all": "Ver todos os repositórios ↗",
+        "credentials.eyebrow": "Credenciais",
+        "credentials.title": "Formação, certificações e marcos",
+        "credentials.desc": "Esta seção deixa mais fácil provar consistência e evolução técnica sem depender só de texto longo.",
+        "credentials.card1.title": "Formação acadêmica",
+        "credentials.card1.text": "Pós-graduação em Cybersecurity e graduação em Análise e Desenvolvimento de Sistemas.",
+        "credentials.card2.title": "Certificações e estudos",
+        "credentials.card2.text": "Azure, Microsoft Cybersecurity Analyst, ISC2 CC, Google Cybersecurity, AWS, GCP, DevOps, Terraform e OCI.",
+        "credentials.card3.title": "Operação em ambientes críticos",
+        "credentials.card3.text": "Experiência com sustentação, monitoramento, incidentes, documentação técnica e apoio a times multidisciplinares.",
+        "credentials.card4.title": "Stack técnica ampla",
+        "credentials.card4.text": "Cloud, Linux, Windows, redes, bancos, containers, observabilidade e automação em um único perfil.",
+        "experience.eyebrow": "Experiência",
+        "experience.title": "Trajetória orientada a suporte, estabilidade e melhoria operacional",
+        "experience.desc": "Minha experiência reúne sustentação de ambientes, atendimento técnico, monitoramento, documentação e evolução de processos para apoiar operações mais estáveis.",
+        "experience.item1.date": "Cloud e DevOps",
+        "experience.item1.title": "Infraestrutura, automação e observabilidade",
+        "experience.item1.company": "Azure, AWS, GCP, containers, IaC e monitoramento",
+        "experience.item1.li1": "Criação de rotinas para reduzir trabalho manual e padronizar atividades técnicas.",
+        "experience.item1.li2": "Configuração de dashboards, alertas e práticas de acompanhamento de ambientes.",
+        "experience.item1.li3": "Uso de GitHub, Docker, Kubernetes, Terraform e scripts para documentar e entregar soluções reproduzíveis.",
+        "experience.item2.date": "Operações",
+        "experience.item2.title": "Suporte técnico, incidentes e sustentação",
+        "experience.item2.company": "Windows, Linux, redes, GLPI, Zabbix, Grafana e Prometheus",
+        "experience.item2.li1": "Atuação em suporte N2/N3, investigação de falhas e recuperação de serviços.",
+        "experience.item2.li2": "Registro técnico de procedimentos, diagnósticos e ações corretivas.",
+        "experience.item2.li3": "Comunicação com áreas de infraestrutura, desenvolvimento, segurança e usuários finais.",
+        "experience.item3.date": "Segurança",
+        "experience.item3.title": "Cybersecurity e continuidade",
+        "experience.item3.company": "Boas práticas, resposta a incidentes e análise operacional",
+        "experience.item3.li1": "Visão de segurança aplicada à operação, com foco em prevenção, rastreabilidade e resposta.",
+        "experience.item3.li2": "Estudos e certificações em segurança, cloud e fundamentos de DevOps.",
+        "experience.item3.li3": "Apoio à melhoria de processos para diminuir recorrência de incidentes.",
+        "diff.eyebrow": "Diferenciais",
+        "diff.title": "Como contribuo dentro de um time técnico",
+        "diff.desc": "Um perfil de operação forte precisa resolver o agora sem perder a chance de melhorar o próximo atendimento. É aqui que experiência prática, documentação e automação se encontram.",
+        "diff.card1.label": "Confiabilidade",
+        "diff.card1.title": "Foco em estabilidade e resposta rápida",
+        "diff.card1.text": "Investigo incidentes com senso de prioridade, impacto e continuidade, buscando restaurar o serviço e registrar aprendizados.",
+        "diff.card2.label": "Autonomia",
+        "diff.card2.title": "Resolve, documenta e entrega",
+        "diff.card2.text": "Tenho perfil prático para investigar, automatizar, registrar decisões técnicas e compartilhar procedimentos com o time.",
+        "diff.card3.label": "Colaboração",
+        "diff.card3.title": "Boa ponte entre operação e tecnologia",
+        "diff.card3.text": "Transito bem entre suporte, infraestrutura, desenvolvimento e segurança, facilitando alinhamentos em ambientes multidisciplinares.",
+        "contact.eyebrow": "Contato",
+        "contact.title": "Vamos conversar sobre a próxima oportunidade",
+        "contact.desc": "Estou aberto a oportunidades em cloud, infraestrutura, DevOps, SRE, observabilidade, suporte avançado e segurança operacional.",
+        "contact.emailCta": "Enviar mensagem ↗",
+        "contact.whatsappCta": "Abrir conversa ↗",
+        "contact.linkedinCta": "Ver perfil ↗",
+        "footer.text": "Cloud, infraestrutura, monitoramento e projetos no GitHub"
+      },
+      en: {
+        "nav.about": "About",
+        "nav.projects": "Projects",
+        "nav.experience": "Experience",
+        "nav.credentials": "Credentials",
+        "nav.differentials": "Strengths",
+        "nav.contact": "Contact",
+        "hero.eyebrow": "Open to Cloud, Infrastructure and Observability opportunities",
+        "hero.title": "Portfolio focused on <span class=\"gradient-text\">results, automation and reliability</span>",
+        "hero.lead": "I'm Ricardo Santana, an infrastructure, cloud, operational security and observability professional. I turn support and operations problems into more reliable, observable and automated environments, with clear documentation and a focus on service continuity.",
+        "hero.github": "View GitHub",
+        "hero.contact": "Contact me",
+        "stats.years": "in infrastructure, technical support and operations.",
+        "stats.cloud": "Azure, AWS, GCP, observability and reliability.",
+        "stats.devops": "automation, containers, IaC and continuous improvement.",
+        "profile.summary": "Cloud, infrastructure, observability and operational security. Practical profile focused on solutions, documentation and service stability.",
+        "about.eyebrow": "About me",
+        "about.title": "Operations, cloud and automation working together",
+        "about.desc": "I connect infrastructure, support, observability and security to reduce recurring failures, speed up diagnostics and create more predictable routines for technical teams.",
+        "about.card1.title": "Infrastructure and cloud",
+        "about.card1.text": "Experience with hybrid environments, Windows, Linux, L2/L3 support, cloud administration and production troubleshooting focused on stability.",
+        "about.card2.title": "Monitoring and observability",
+        "about.card2.text": "Work with dashboards, alerts, root-cause analysis and tools that help teams detect failures earlier and reduce downtime.",
+        "about.card3.title": "Automation and delivery",
+        "about.card3.text": "Use of scripts, CI/CD, IaC, Docker and Kubernetes to reduce manual tasks, standardize processes and speed up delivery with less risk.",
+        "projects.title": "Featured projects",
+        "projects.desc": "Public repositories showing hands-on work in cloud, automation, backend, containers, observability and applied AI experiments.",
+        "projects.open": "Open repository ↗",
+        "project.nexa": "Library/SDK for integrations and workflow automation.",
+        "project.azureMcp": "Server for integrations with the Azure ecosystem and connected tools.",
+        "project.monitoring": "Project focused on monitoring and operating scalable environments.",
+        "project.forum": "Study application focused on APIs, topics and user interaction.",
+        "project.docker": "Practical study base for containers, orchestration and modern delivery.",
+        "project.linux": "Collection of scripts and automations for Linux and administration routines.",
+        "project.label.stack": "Technical stack",
+        "project.label.impact": "Impact",
+        "project.label.fit": "Company fit",
+        "project.nexa.stack": "SDK, APIs, service integration, module organization and documentation for other developers.",
+        "project.nexa.impact": "Shows the ability to create reusable components and reduce rework in integrations.",
+        "project.nexa.fit": "A strong signal for teams working with internal APIs, process automation and technical standardization.",
+        "project.azureMcp.stack": "Azure, MCP, APIs, authentication, cloud automation and integration with operations tools.",
+        "project.azureMcp.impact": "Connects cloud and modern agent/tooling workflows, reinforcing AI Ops and technical productivity.",
+        "project.azureMcp.fit": "Relevant for companies using Azure, infrastructure governance and AI-assisted automation.",
+        "project.monitoring.stack": "Azure VMSS, metrics, alerts, dashboards and observability practices for scale.",
+        "project.monitoring.impact": "Shows the ability to monitor critical environments and turn technical signals into action.",
+        "project.monitoring.fit": "Speaks to operations, SRE, NOC and companies with scalable cloud infrastructure.",
+        "project.forum.stack": "Java, backend, REST API, endpoint modeling, persistence and business rules.",
+        "project.forum.impact": "Shows backend development foundations, useful for working better with engineering squads.",
+        "project.forum.fit": "Useful for roles that bridge support, infrastructure, APIs and development teams.",
+        "project.docker.stack": "Docker, Kubernetes, containers, manifests, deployment fundamentals and workload operations.",
+        "project.docker.impact": "Reinforces growth toward DevOps, application packaging and reproducible environments.",
+        "project.docker.fit": "Good fit for companies modernizing platforms, migrating to cloud or adopting containers.",
+        "project.linux.stack": "Shell, Debian Linux, routine automation, systems administration and operational scripts.",
+        "project.linux.impact": "Shows the ability to turn repetitive tasks into executable and documented procedures.",
+        "project.linux.fit": "Strong for support, Linux infrastructure, service continuity and teams that value simple automation.",
+        "projects.moreTitle": "Other public repositories on GitHub",
+        "projects.moreText": "Other highlights include <strong>PCRICARDO</strong>, <strong>PythonFundamentos</strong>, <strong>cripto2</strong>, <strong>literalura</strong>, <strong>devboard-alura</strong>, <strong>API-REST-com-SpringBoote-MySQL-F-rum-Hub-</strong>, <strong>HEALTHIA-IA-M-dica-de-Diagn-stico</strong> and <strong>Plataforma-de-ensino-de-idiomas</strong>.",
+        "projects.all": "View all repositories ↗",
+        "credentials.eyebrow": "Credentials",
+        "credentials.title": "Education, certifications and milestones",
+        "credentials.desc": "This section makes it easier to show consistency and technical growth without relying only on long text.",
+        "credentials.card1.title": "Academic background",
+        "credentials.card1.text": "Postgraduate studies in Cybersecurity and a degree in Systems Analysis and Development.",
+        "credentials.card2.title": "Certifications and studies",
+        "credentials.card2.text": "Azure, Microsoft Cybersecurity Analyst, ISC2 CC, Google Cybersecurity, AWS, GCP, DevOps, Terraform and OCI.",
+        "credentials.card3.title": "Critical operations",
+        "credentials.card3.text": "Experience with support, monitoring, incidents, technical documentation and collaboration with multidisciplinary teams.",
+        "credentials.card4.title": "Broad technical stack",
+        "credentials.card4.text": "Cloud, Linux, Windows, networking, databases, containers, observability and automation in one profile.",
+        "experience.eyebrow": "Experience",
+        "experience.title": "A path focused on support, stability and operational improvement",
+        "experience.desc": "My experience brings together environment support, technical service, monitoring, documentation and process improvement to support more stable operations.",
+        "experience.item1.date": "Cloud and DevOps",
+        "experience.item1.title": "Infrastructure, automation and observability",
+        "experience.item1.company": "Azure, AWS, GCP, containers, IaC and monitoring",
+        "experience.item1.li1": "Creation of routines to reduce manual work and standardize technical activities.",
+        "experience.item1.li2": "Configuration of dashboards, alerts and environment tracking practices.",
+        "experience.item1.li3": "Use of GitHub, Docker, Kubernetes, Terraform and scripts to document and deliver reproducible solutions.",
+        "experience.item2.date": "Operations",
+        "experience.item2.title": "Technical support, incidents and service continuity",
+        "experience.item2.company": "Windows, Linux, networking, GLPI, Zabbix, Grafana and Prometheus",
+        "experience.item2.li1": "Work in L2/L3 support, failure investigation and service recovery.",
+        "experience.item2.li2": "Technical recording of procedures, diagnostics and corrective actions.",
+        "experience.item2.li3": "Communication with infrastructure, development, security teams and end users.",
+        "experience.item3.date": "Security",
+        "experience.item3.title": "Cybersecurity and continuity",
+        "experience.item3.company": "Best practices, incident response and operational analysis",
+        "experience.item3.li1": "Security applied to operations, focused on prevention, traceability and response.",
+        "experience.item3.li2": "Studies and certifications in security, cloud and DevOps fundamentals.",
+        "experience.item3.li3": "Support for process improvement to reduce recurring incidents.",
+        "diff.eyebrow": "Strengths",
+        "diff.title": "How I contribute inside a technical team",
+        "diff.desc": "A strong operations profile needs to solve what is happening now while improving the next response. This is where practical experience, documentation and automation meet.",
+        "diff.card1.label": "Reliability",
+        "diff.card1.title": "Focus on stability and fast response",
+        "diff.card1.text": "I investigate incidents with a sense of priority, impact and continuity, aiming to restore service and record lessons learned.",
+        "diff.card2.label": "Autonomy",
+        "diff.card2.title": "Solves, documents and delivers",
+        "diff.card2.text": "I have a practical profile for investigating, automating, recording technical decisions and sharing procedures with the team.",
+        "diff.card3.label": "Collaboration",
+        "diff.card3.title": "A bridge between operations and technology",
+        "diff.card3.text": "I move well between support, infrastructure, development and security, helping align multidisciplinary environments.",
+        "contact.eyebrow": "Contact",
+        "contact.title": "Let's talk about the next opportunity",
+        "contact.desc": "I'm open to opportunities in cloud, infrastructure, DevOps, SRE, observability, advanced support and operational security.",
+        "contact.emailCta": "Send message ↗",
+        "contact.whatsappCta": "Open chat ↗",
+        "contact.linkedinCta": "View profile ↗",
+        "footer.text": "Cloud, infrastructure, monitoring and GitHub projects"
+      },
+      es: {
+        "nav.about": "Sobre mí",
+        "nav.projects": "Proyectos",
+        "nav.experience": "Experiencia",
+        "nav.credentials": "Credenciales",
+        "nav.differentials": "Diferenciales",
+        "nav.contact": "Contacto",
+        "hero.eyebrow": "Disponible para oportunidades en Cloud, Infraestructura y Observabilidad",
+        "hero.title": "Portafolio enfocado en <span class=\"gradient-text\">resultados, automatización y confiabilidad</span>",
+        "hero.lead": "Soy Ricardo Santana, profesional de infraestructura, cloud, seguridad operacional y observabilidad. Convierto problemas de soporte y operación en entornos más confiables, observables y automatizados, con documentación clara y foco en continuidad del servicio.",
+        "hero.github": "Ver GitHub",
+        "hero.contact": "Contactarme",
+        "stats.years": "en infraestructura, soporte técnico y operaciones.",
+        "stats.cloud": "Azure, AWS, GCP, observabilidad y confiabilidad.",
+        "stats.devops": "automatización, contenedores, IaC y mejora continua.",
+        "profile.summary": "Cloud, infraestructura, observabilidad y seguridad operacional. Perfil práctico orientado a soluciones, documentación y estabilidad del servicio.",
+        "about.eyebrow": "Sobre mí",
+        "about.title": "Operación, cloud y automatización trabajando juntas",
+        "about.desc": "Conecto infraestructura, soporte, observabilidad y seguridad para reducir fallas recurrentes, acelerar diagnósticos y crear rutinas más previsibles para equipos técnicos.",
+        "about.card1.title": "Infraestructura y cloud",
+        "about.card1.text": "Experiencia con entornos híbridos, Windows, Linux, soporte N2/N3, administración cloud y resolución de problemas en producción con foco en estabilidad.",
+        "about.card2.title": "Monitoreo y observabilidad",
+        "about.card2.text": "Trabajo con dashboards, alertas, análisis de causa raíz y herramientas que ayudan a detectar fallas antes y reducir indisponibilidad.",
+        "about.card3.title": "Automatización y entrega",
+        "about.card3.text": "Uso de scripts, CI/CD, IaC, Docker y Kubernetes para reducir tareas manuales, estandarizar procesos y acelerar entregas con menos riesgo.",
+        "projects.title": "Proyectos destacados",
+        "projects.desc": "Repositorios públicos que muestran práctica en cloud, automatización, backend, contenedores, observabilidad y experimentos con IA aplicada.",
+        "projects.open": "Abrir repositorio ↗",
+        "project.nexa": "Biblioteca/SDK para integraciones y automatización de flujos.",
+        "project.azureMcp": "Servidor para integraciones con el ecosistema Azure y herramientas conectadas.",
+        "project.monitoring": "Proyecto orientado al monitoreo y operación de entornos escalables.",
+        "project.forum": "Aplicación de estudio enfocada en APIs, tópicos e interacción de usuarios.",
+        "project.docker": "Base práctica para estudios en contenedores, orquestación y entrega moderna.",
+        "project.linux": "Colección de scripts y automatizaciones para Linux y rutinas de administración.",
+        "project.label.stack": "Stack técnica",
+        "project.label.impact": "Impacto",
+        "project.label.fit": "Fit con empresas",
+        "project.nexa.stack": "SDK, APIs, integración entre servicios, organización de módulos y documentación para otros desarrolladores.",
+        "project.nexa.impact": "Muestra capacidad de crear componentes reutilizables y reducir retrabajo en integraciones.",
+        "project.nexa.fit": "Buena señal para equipos que trabajan con APIs internas, automatización de procesos y estandarización técnica.",
+        "project.azureMcp.stack": "Azure, MCP, APIs, autenticación, automatización cloud e integración con herramientas de operación.",
+        "project.azureMcp.impact": "Conecta cloud y herramientas/agentes modernos, reforzando visión de AI Ops y productividad técnica.",
+        "project.azureMcp.fit": "Aderente a empresas que usan Azure, gobierno de infraestructura y automatización asistida por IA.",
+        "project.monitoring.stack": "Azure VMSS, métricas, alertas, dashboards y prácticas de observabilidad para escala.",
+        "project.monitoring.impact": "Evidencia capacidad de monitorear entornos críticos y transformar señales técnicas en acción.",
+        "project.monitoring.fit": "Conversa con operaciones, SRE, NOC y empresas con infraestructura escalable en cloud.",
+        "project.forum.stack": "Java, backend, API REST, modelado de endpoints, persistencia y reglas de negocio.",
+        "project.forum.impact": "Muestra base de desarrollo backend, importante para dialogar mejor con squads de ingeniería.",
+        "project.forum.fit": "Ayuda en puestos que conectan soporte, infraestructura, APIs y equipos de desarrollo.",
+        "project.docker.stack": "Docker, Kubernetes, contenedores, manifests, fundamentos de deploy y operación de workloads.",
+        "project.docker.impact": "Refuerza evolución hacia DevOps, empaquetado de aplicaciones y entornos reproducibles.",
+        "project.docker.fit": "Buena adherencia para empresas en modernización, migración cloud y adopción de contenedores.",
+        "project.linux.stack": "Shell, Linux Debian, automatización de rutinas, administración de sistemas y scripts operacionales.",
+        "project.linux.impact": "Demuestra capacidad de convertir tareas repetitivas en procedimientos ejecutables y documentados.",
+        "project.linux.fit": "Fuerte para soporte, infraestructura Linux, sustentación y equipos que valoran automatización simple.",
+        "projects.moreTitle": "Otros repositorios públicos en GitHub",
+        "projects.moreText": "También se destacan proyectos como <strong>PCRICARDO</strong>, <strong>PythonFundamentos</strong>, <strong>cripto2</strong>, <strong>literalura</strong>, <strong>devboard-alura</strong>, <strong>API-REST-com-SpringBoote-MySQL-F-rum-Hub-</strong>, <strong>HEALTHIA-IA-M-dica-de-Diagn-stico</strong> y <strong>Plataforma-de-ensino-de-idiomas</strong>.",
+        "projects.all": "Ver todos los repositorios ↗",
+        "credentials.eyebrow": "Credenciales",
+        "credentials.title": "Formación, certificaciones e hitos",
+        "credentials.desc": "Esta sección ayuda a demostrar consistencia y evolución técnica sin depender solo de textos largos.",
+        "credentials.card1.title": "Formación académica",
+        "credentials.card1.text": "Posgrado en Cybersecurity y grado en Análisis y Desarrollo de Sistemas.",
+        "credentials.card2.title": "Certificaciones y estudios",
+        "credentials.card2.text": "Azure, Microsoft Cybersecurity Analyst, ISC2 CC, Google Cybersecurity, AWS, GCP, DevOps, Terraform y OCI.",
+        "credentials.card3.title": "Operación en entornos críticos",
+        "credentials.card3.text": "Experiencia con sustentación, monitoreo, incidentes, documentación técnica y apoyo a equipos multidisciplinarios.",
+        "credentials.card4.title": "Stack técnica amplia",
+        "credentials.card4.text": "Cloud, Linux, Windows, redes, bases de datos, contenedores, observabilidad y automatización en un solo perfil.",
+        "experience.eyebrow": "Experiencia",
+        "experience.title": "Trayectoria orientada a soporte, estabilidad y mejora operacional",
+        "experience.desc": "Mi experiencia reúne sustentación de entornos, atención técnica, monitoreo, documentación y evolución de procesos para apoyar operaciones más estables.",
+        "experience.item1.date": "Cloud y DevOps",
+        "experience.item1.title": "Infraestructura, automatización y observabilidad",
+        "experience.item1.company": "Azure, AWS, GCP, contenedores, IaC y monitoreo",
+        "experience.item1.li1": "Creación de rutinas para reducir trabajo manual y estandarizar actividades técnicas.",
+        "experience.item1.li2": "Configuración de dashboards, alertas y prácticas de seguimiento de entornos.",
+        "experience.item1.li3": "Uso de GitHub, Docker, Kubernetes, Terraform y scripts para documentar y entregar soluciones reproducibles.",
+        "experience.item2.date": "Operaciones",
+        "experience.item2.title": "Soporte técnico, incidentes y sustentación",
+        "experience.item2.company": "Windows, Linux, redes, GLPI, Zabbix, Grafana y Prometheus",
+        "experience.item2.li1": "Actuación en soporte N2/N3, investigación de fallas y recuperación de servicios.",
+        "experience.item2.li2": "Registro técnico de procedimientos, diagnósticos y acciones correctivas.",
+        "experience.item2.li3": "Comunicación con áreas de infraestructura, desarrollo, seguridad y usuarios finales.",
+        "experience.item3.date": "Seguridad",
+        "experience.item3.title": "Cybersecurity y continuidad",
+        "experience.item3.company": "Buenas prácticas, respuesta a incidentes y análisis operacional",
+        "experience.item3.li1": "Visión de seguridad aplicada a la operación, con foco en prevención, trazabilidad y respuesta.",
+        "experience.item3.li2": "Estudios y certificaciones en seguridad, cloud y fundamentos de DevOps.",
+        "experience.item3.li3": "Apoyo a la mejora de procesos para disminuir recurrencia de incidentes.",
+        "diff.eyebrow": "Diferenciales",
+        "diff.title": "Cómo contribuyo dentro de un equipo técnico",
+        "diff.desc": "Un perfil fuerte de operaciones necesita resolver el ahora sin perder la oportunidad de mejorar la próxima atención. Aquí se unen experiencia práctica, documentación y automatización.",
+        "diff.card1.label": "Confiabilidad",
+        "diff.card1.title": "Foco en estabilidad y respuesta rápida",
+        "diff.card1.text": "Investigo incidentes con sentido de prioridad, impacto y continuidad, buscando restaurar el servicio y registrar aprendizajes.",
+        "diff.card2.label": "Autonomía",
+        "diff.card2.title": "Resuelve, documenta y entrega",
+        "diff.card2.text": "Tengo un perfil práctico para investigar, automatizar, registrar decisiones técnicas y compartir procedimientos con el equipo.",
+        "diff.card3.label": "Colaboración",
+        "diff.card3.title": "Puente entre operación y tecnología",
+        "diff.card3.text": "Me muevo bien entre soporte, infraestructura, desarrollo y seguridad, facilitando alineamientos en entornos multidisciplinarios.",
+        "contact.eyebrow": "Contacto",
+        "contact.title": "Hablemos sobre la próxima oportunidad",
+        "contact.desc": "Estoy abierto a oportunidades en cloud, infraestructura, DevOps, SRE, observabilidad, soporte avanzado y seguridad operacional.",
+        "contact.emailCta": "Enviar mensaje ↗",
+        "contact.whatsappCta": "Abrir conversación ↗",
+        "contact.linkedinCta": "Ver perfil ↗",
+        "footer.text": "Cloud, infraestructura, monitoreo y proyectos en GitHub"
+      }
+    };
+
+    const applyLanguage = (lang) => {
+      const dictionary = translations[lang] || translations["pt-BR"];
+      document.documentElement.lang = lang === "pt-BR" ? "pt-BR" : lang;
+
+      document.querySelectorAll("[data-i18n]").forEach((element) => {
+        const key = element.dataset.i18n;
+        if (dictionary[key]) {
+          element.textContent = dictionary[key];
+        }
+      });
+
+      document.querySelectorAll("[data-i18n-html]").forEach((element) => {
+        const key = element.dataset.i18nHtml;
+        if (dictionary[key]) {
+          element.innerHTML = dictionary[key];
+        }
+      });
+
+      document.querySelectorAll(".lang-btn").forEach((button) => {
+        const isActive = button.dataset.lang === lang;
+        button.classList.toggle("is-active", isActive);
+        button.setAttribute("aria-pressed", String(isActive));
+      });
+
+      localStorage.setItem("portfolio-language", lang);
+    };
+
+    document.querySelectorAll(".lang-btn").forEach((button) => {
+      button.addEventListener("click", () => applyLanguage(button.dataset.lang));
+    });
+
+    applyLanguage(localStorage.getItem("portfolio-language") || "pt-BR");
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
